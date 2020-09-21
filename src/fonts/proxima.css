@@ -1,0 +1,15 @@
+
+@font-face {
+  font-family: 'Proxima Nova Alt Light';
+  src: url('./proxima/Proxima Nova Alt Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  rc: url('./proxima/Proxima Nova Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Regular';
+  rc: url('./proxima/ProximaNova-Regular.otf') format('opentype');
+}

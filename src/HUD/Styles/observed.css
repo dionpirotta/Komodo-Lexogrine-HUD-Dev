@@ -1,0 +1,442 @@
+.observed {
+    position: fixed;
+    width: 640px;
+    height: 100px;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    color: var(--white-full);
+}
+
+.observed .main_row,
+.observed .stats_row {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.observed .main_row .empty_obs_bar {
+    width: 10px;
+    height: 100%;
+}
+
+.observed .main_row .logo {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-panel-color);
+}
+
+.observed .main_row .logo img {
+    max-height: 42px;
+    max-width: 42px;
+}
+
+.observed .stats_row .grenade_container {
+    height: 100%;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ! Will change grenades to be left to right, right to left or centered */
+    background-color: var(--sub-panel-color);
+}
+
+.observed .stats_row .grenade_container .no_grenades.show {
+    display: flex;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.observed .stats_row .grenade_container .no_grenades.hide {
+    display: none;
+}
+
+.observed .stats_row .weapon.grenade {
+    max-height: 30px;
+    max-width: 25px;
+    filter: brightness(0.75) invert(0);
+}
+
+/* ! This makes active grenade white */
+.observed .stats_row .active.weapon.grenade {
+    filter: brightness(1) invert(0);
+}
+
+/* .observed .stats_row .grenade_container.CT .active.weapon.grenade {
+    filter: invert(100%) brightness(0%) invert(68%) sepia(50%) saturate(2601%) hue-rotate(178deg) brightness(105%) contrast(91%);
+  }
+  
+  .observed .stats_row .grenade_container.T .active.weapon.grenade {
+    filter: invert(100%) brightness(0%) invert(66%) sepia(64%) saturate(450%) hue-rotate(6deg) brightness(110%) contrast(88%);
+  } */
+
+.observed .main_row .username_container {
+    height: 100%;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--main-panel-color);
+}
+
+.observed.T .main_row .username_container .username,
+.observed.T .stats_row .ammo .ammo_counter .ammo_reserve {
+    color: var(--main-t);
+}
+
+.observed.CT .main_row .username_container .username,
+.observed.CT .stats_row .ammo .ammo_counter .ammo_reserve {
+    color: var(--main-ct);
+}
+
+.observed .main_row .username_container .username {
+    width: 100%;
+    font-size: 20px;
+    color: var(--white-half);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+}
+
+.observed .main_row .username_container .real_name {
+    width: 100%;
+    font-size: 10px;
+    color: var(--white-half);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+}
+
+.observed .main_row {
+    font-weight: 600;
+}
+
+.observed .main_row .flag {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-panel-color);
+}
+
+.observed .main_row .flag img {
+    max-height: 42px;
+    max-width: 42px;
+}
+
+.empty_slot {
+    height: 50px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.obs_bar {
+    width: 10px;
+    height: 100%;
+}
+
+.obs_bar.CT {
+    background-color: var(--main-ct);
+}
+
+.obs_bar.T {
+    background-color: var(--main-t);
+}
+
+
+/* .main_row .CT,
+  .stats_row .CT {
+    background-color: var(--main-ct);
+  }
+  
+  .main_row .T,
+  .stats_row .T {
+    background-color: var(--main-t);
+  } */
+
+.observed .under_avatar {
+    height: 140px;
+    width: 140px;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sub-panel-color);
+}
+
+.observed .under_avatar.hide {
+    visibility: hidden;
+}
+
+.observed .under_avatar .avatar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.observed .avatar img {
+    max-width: 140px;
+    max-height: 140px;
+}
+
+.observed .stats_row .health_armor_container {
+    height: 100%;
+    width: 140px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--main-panel-color);
+}
+
+.observed .stats_row .health_armor_container .icon {
+    width: 28px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.observed .stats_row .health_armor_container .icon img,
+.observed .stats_row .health_armor_container .icon .armor_indicator img {
+    max-height: 50px;
+    max-width: 28px;
+    padding-left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.observed .stats_row .health_armor_container .text {
+    width: 38px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 2px;
+    padding-top: 1px;
+}
+
+.observed .stats_row .obs_slot {
+    height: 100%;
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sub-panel-color);
+}
+
+.observed .stats_row .obs_slot_number {
+    height: 100%;
+    width: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 12px;
+    padding-left: 2px;
+    margin-top: 2px;
+}
+
+.observed .stats_row .obs_slot_bar {
+    width: 4px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.observed .stats_row .obs_slot_bar.CT {
+    background-color: var(--main-ct);
+}
+
+.observed .stats_row .obs_slot_bar.T {
+    background-color: var(--main-t);
+}
+
+.observed .stats_row .bomb_kit_icon {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sub-panel-color);
+}
+
+.observed .stats_row .bomb_kit_icon .bomb_indicator img,
+.observed .stats_row .bomb_kit_icon .defuse_indicator img {
+    max-height: 50px;
+    max-width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.observed .stats_row .round_kills {
+    height: 100%;
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sub-panel-color);
+}
+
+.observed .stats_row .round_kills .round_kills_text {
+    width: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2px;
+}
+
+.observed .stats_row .round_kills .skull_icon {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.observed .stats_row .round_kills .skull_icon img {
+    max-height: 50px;
+    max-width: 18px;
+}
+
+.observed .stats_row .statistics {
+    height: 100%;
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sub-panel-color);
+}
+
+.observed .stats_row .statistics .stat {
+    width: 48px;
+    height: 100%;
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.observed.CT .stats_row .statistics .stat .label {
+    color: var(--main-ct);
+    margin-right: 2px;
+}
+
+.observed.T .stats_row .statistics .stat .label {
+    color: var(--main-t);
+    margin-right: 2px;
+}
+
+.observed .stats_row .ammo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    justify-content: center;
+    background-color: var(--main-panel-color);
+}
+
+.observed .stats_row .ammo .ammo_cont {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.observed .stats_row .ammo .ammo_icon_container {
+    display: flex;
+    height: 100%;
+    width: 46px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+}
+
+.observed .stats_row .ammo .ammo_icon_container img {
+    max-width: 30px;
+}
+
+.observed .stats_row .ammo .ammo_knife {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.observed .stats_row .ammo .ammo_knife img {
+    max-height: 75%;
+    max-width: 75%;
+}
+
+.observed .stats_row .ammo .ammo_knife.CT img {
+    /* Alter between Komodo's Color New and Default */
+    filter: invert(100%) brightness(0%) invert(68%) sepia(50%) saturate(2601%) hue-rotate(178deg) brightness(105%) contrast(91%);
+    /* filter: invert(100%) brightness(0%) invert(75%) sepia(4%) saturate(5821%) hue-rotate(175deg) brightness(68%) contrast(87%); */
+}
+
+.observed .stats_row .ammo .ammo_knife.T img {
+    /* Alter between Komodo's Color New and Default */
+    filter: invert(100%) brightness(0%) invert(66%) sepia(64%) saturate(450%) hue-rotate(6deg) brightness(110%) contrast(88%);
+    /* filter: invert(100%) brightness(0%) invert(56%) sepia(76%) saturate(1711%) hue-rotate(15deg) brightness(96%) contrast(87%); */
+}
+
+
+
+.observed .stats_row .ammo .ammo_counter {
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+    width: 78px;
+    padding-right: 6px;
+    padding-top: 2px;
+}
+
+.observed .stats_row .ammo .ammo_counter>div {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.observed .stats_row .ammo .ammo_counter .ammo_clip {
+    justify-content: flex-end;
+}
+
+.observed .stats_row .ammo .ammo_counter .ammo_reserve {
+    justify-content: flex-start;
+}

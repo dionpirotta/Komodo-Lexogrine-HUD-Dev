@@ -1,0 +1,581 @@
+.teambox {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.teambox.hide {
+    opacity: 0;
+}
+
+.teambox.left {
+    left: 10px;
+}
+
+.teambox.right {
+    right: 10px;
+}
+
+.teambox .player {
+    width: 645px;
+    height: 70px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.teambox.right .player {
+    flex-direction: row-reverse;
+}
+
+.teambox .player .player_data {
+    background-color: var(--sub-panel-color);
+    width: 380px;
+    display: flex;
+    position: relative;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.teambox.left .player .player_data {
+    flex-direction: row;
+}
+
+.teambox.right .player .player_data {
+    flex-direction: row-reverse;
+}
+
+.teambox .player.dead .player_data {
+    width: 350px;
+}
+
+.teambox .player .player_side_bar {
+    width: 10px;
+    height: 70px;
+}
+
+.teambox .player.dead .player_side_bar.CT,
+.teambox .player.dead .player_side_bar.T {
+    background-color: var(--sub-panel-color);
+}
+
+.teambox .player .player_side_bar.CT {
+    background-color: var(--main-ct);
+}
+
+.teambox .player .player_side_bar.T {
+    background-color: var(--main-t);
+}
+
+.teambox .player .player_data .avatar {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.teambox.right .player .player_data .avatar {
+    justify-content: flex-start;
+}
+
+.teambox .player.dead .player_data .avatar {
+    filter: grayscale(100%);
+}
+
+.teambox .player .player_data .avatar img {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.teambox .player .player_data .player_stats {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.teambox .player .observing {
+    width: 10px;
+    height: 100%;
+}
+
+.teambox .player .observing.active {
+    background-color: var(--white-full);
+}
+
+.teambox .player .row {
+    flex: 1;
+    display: flex;
+    position: relative;
+}
+
+.teambox .player .row.obs {
+    background-color: var(--white-dull);
+}
+
+.teambox.left .player .row {
+    flex-direction: row;
+}
+
+.teambox.right .player .row {
+    flex-direction: row-reverse;
+}
+
+.teambox.right .player .row .username {
+    flex-direction: row-reverse;
+}
+
+.teambox .player .dead-stats {
+    position: absolute;
+    height: 85%;
+    width: 60px;
+    display: none;
+    flex-direction: column;
+    font-weight: 600;
+    color: var(--white-full);
+    opacity: 0.75;
+    top: 10%;
+}
+
+.teambox .player.dead .dead-stats {
+    display: flex;
+}
+
+.teambox.right .player .dead-stats {
+    left: 5px;
+}
+
+.teambox.left .player .dead-stats {
+    right: 5px;
+}
+
+.teambox .player .dead-stats .labels,
+.teambox .player .dead-stats .values {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.teambox .player .dead-stats .labels .stat-label,
+.teambox .player .dead-stats .values .stat-value {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.teambox .player .row .health {
+    width: 28px;
+    display: flex;
+    z-index: 1;
+    color: var(--white-full);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.teambox.left .player .row .health {
+    padding-left: 4px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.teambox.right .player .row .health {
+    padding-right: 4px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.teambox.left .player.dead .row .health {
+    padding-left: 4px;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--white-half);
+    overflow: hidden;
+}
+
+.teambox.right .player.dead .row .health {
+    padding-right: 4px;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--white-half);
+    overflow: hidden;
+}
+
+.teambox .player .row .username {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    color: var(--white-full);
+    font-weight: 600;
+    max-width: calc(100% - 32px);
+    justify-content: space-between;
+    overflow: hidden;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* text-shadow: 0.5px 0.5px 1px black; */
+}
+
+.teambox.left .player .row .username {
+    padding-left: 5px;
+}
+
+.teambox.right .player .row .username {
+    padding-right: 5px;
+}
+
+.teambox .player.dead .row .username {
+    color: var(--white-half);
+}
+
+.teambox .player .row .armor_and_utility {
+    width: 46px;
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* Center Here will center if 1 item, flex will keep stuck to side */
+.teambox.left .player .row .armor_and_utility {
+    justify-content: flex-start;
+    /* justify-content: center; */
+}
+
+/* Center Here will center if 1 item, flex will keep stuck to side */
+.teambox.right .player .row .armor_and_utility {
+    justify-content: flex-end;
+    /* justify-content: center; */
+}
+
+.teambox .player .row .armor_and_utility div {
+    display: flex;
+    width: 50%;
+}
+
+.teambox .player.dead .row .armor_and_utility {
+    width: 0px;
+    overflow: hidden;
+}
+
+.player .armor_indicator img,
+.player .bomb_indicator img,
+.player .defuse_indicator img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.teambox .player .row .money {
+    width: 63px;
+    color: var(--color-moneys);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.teambox.left .player .row .money {
+    justify-content: flex-start;
+    padding-left: 2px;
+}
+
+.teambox.right .player .row .money {
+    justify-content: flex-end;
+    padding-right: 2px;
+}
+
+.teambox .player.dead .row .money {
+    color: var(--white-half);
+}
+
+.teambox .player .row .round_kills {
+    width: 35px;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.teambox.left .player .row .round_kills {
+    justify-content: flex-start;
+}
+
+.teambox.right .player .row .round_kills {
+    justify-content: flex-end;
+}
+
+.teambox .player .row .round_kills_skull img {
+    max-height: 18px;
+}
+
+.teambox .player.dead .row .round_kills_skull img {
+    max-height: 18px;
+    opacity: 0.4;
+}
+
+.teambox .player .row .round_kills_count {
+    color: var(--white-full);
+    font-weight: 600;
+    margin-left: 2px;
+    font-size: 16px;
+}
+
+.teambox .player.dead .row .round_kills_count {
+    color: var(--white-half);
+    font-weight: 600;
+    margin-left: 2px;
+    font-size: 16px;
+}
+
+.teambox .player .row .hp_background,
+.teambox .player .row .hp_background_2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.teambox .player.dead .row .hp_background_2 {
+    opacity: 0;
+}
+
+.teambox .player .row .hp_background_2 {
+    background-color: var(--color-bomb);
+    transition: width 0.5s 1.25s;
+}
+
+.teambox.CT .player .row .hp_background {
+    background-color: var(--main-ct);
+}
+
+.teambox.T .player .row .hp_background {
+    background-color: var(--main-t);
+}
+
+.player .username img.weapon {
+    max-height: 30px;
+    width: auto;
+    max-width: 90px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+img.weapon {
+    filter: invert(100%) invert(58%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(96%) contrast(95%);
+}
+
+img.weapon.active {
+    filter: drop-shadow(0.1px 0.1px 0.1px var(--main-panel-color)) drop-shadow(0.1px 0.1px 0.1px var(--white-full));
+}
+
+.teambox .secondary_weapon {
+    width: auto;
+    max-width: 60px;
+    display: flex;
+}
+
+.teambox.left .secondary_weapon {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.teambox.right .secondary_weapon {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.teambox.right .primary_weapon img,
+.teambox.right .secondary_weapon img,
+.teambox.right .weapon {
+    transform: scaleX(-1);
+}
+
+.secondary_weapon img {
+    max-height: 30px;
+    max-width: 60px;
+}
+
+.player .grenades {
+    flex: 1;
+    min-width: 90px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.teambox.left .grenades {
+    justify-content: flex-end;
+}
+
+.teambox.right .grenades {
+    justify-content: flex-start;
+}
+
+.player .grenades img.grenade {
+    max-height: 24px;
+}
+
+.freeze-time {
+    width: 140px;
+    height: 100%;
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.5s;
+    background-color: var(--sub-panel-color);
+}
+
+.freeze-time.hide {
+    opacity: 0;
+}
+
+.freeze-time.left {
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.freeze-time.right {
+    align-items: flex-end;
+    flex-direction: row-reverse;
+}
+
+.freeze-time .stats {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: var(--white-full);
+}
+
+.freeze-time .stats .labels,
+.freeze-time .stats .values {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.freeze-time .stats .labels .stat-label,
+.freeze-time .stats .values .stat-value {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.freeze-time .spending {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.freeze-time.left .spending {
+    justify-content: flex-end;
+}
+
+.freeze-time.right .spending {
+    justify-content: flex-start;
+}
+
+.freeze-time .spending .spent {
+    color: var(--color-spent);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.freeze-time.left .spending .spent {
+    padding-right: 4px;
+}
+
+.freeze-time.right .spending .spent {
+    padding-left: 4px;
+}
+
+.alive_box {
+    display: flex;
+    flex-direction: row;
+    width: 230px;
+    height: 70px;
+    transition: opacity 0.75s;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    opacity: 1;
+}
+
+.alive_box.hide {
+    opacity: 0;
+}
+
+.players_alive {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background-color: var(--sub-panel-color); */
+}
+
+.players_alive .counter_container {
+    display: flex;
+    height: 50px;
+}
+
+.vs_counter {
+    background-color: var(--sub-panel-color);
+}
+
+.players_alive .counter_container>div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: var(--white-full);
+}
+
+.players_alive .counter_container .team_counter {
+    font-weight: 600;
+    font-size: 30px;
+    background-color: var(--main-panel-color);
+}
+
+.players_alive .title_container {
+    color: var(--white-full);
+    text-transform: uppercase;
+    text-align: center;
+    height: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-panel-color);
+}
+
+.players_alive .counter_container .CT {
+    color: var(--color-new-ct);
+}
+
+.players_alive .counter_container .T {
+    color: var(--color-new-t);
+}
+
+.alive_box .bar {
+    width: 10px;
+    height: 70px;
+}
+
+.alive_box .bar.CT {
+    background-color: var(--color-new-ct);
+}
+
+.alive_box .bar.T {
+    background-color: var(--color-new-t);
+}

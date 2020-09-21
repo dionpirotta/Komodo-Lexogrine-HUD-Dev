@@ -1,0 +1,51 @@
+@import "fonts/proxima.css";
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Proxima Nova Regular', 'Proxima Nova Alt Light', 'Proxima Nova Bold', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*background-image: url('./assets/bg.png');/**/
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.layout {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --main-panel-color: rgba(12, 15, 18, 0.85);
+  --sub-panel-color: rgba(12, 15, 18, 0.70);
+  --white-dull: rgba(250, 250, 250, 0.25);
+  --white-full: rgba(250, 250, 250, 1);
+  --white-half: rgba(250, 250, 250, 0.5);
+  --color-gray: rgba(191, 191, 191, 1.0);
+  --color-moneys: #a7d32e;
+  --color-spent: #d32e2e;
+  --dev-purple: rgba(200, 0, 255, 1);
+  --color-t: #c19511;
+  --color-ct: #5788a8;
+  --color-new-t: #f0c941;
+  --color-new-ct: #5ab8f4;
+  --color-bomb: #f22222;
+  --color-defuse: #2222f2;
+  --main-t: var(--color-new-t);
+  --main-ct: var(--color-new-ct);
+  /* 
+    Dont forget to switch the sidebox grenades in sideboxes.css if you switch the --main colors:
+    .grenade_image.CT
+    .grenade_image.T
+  */
+}

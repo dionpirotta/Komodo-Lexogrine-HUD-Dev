@@ -1,0 +1,217 @@
+.boxes {
+    position: fixed;
+    bottom: 400px;
+}
+
+.boxes.left {
+    left: 10px;
+}
+
+.boxes.right {
+    right: 10px;
+}
+
+.boxes.hide .utilitybox,
+.boxes.hide .moneybox,
+.boxes.hide .sidebox {
+    height: 0;
+    opacity: 0;
+}
+
+.utilitybox.hide,
+.moneybox.hide,
+.sidebox.hide {
+    height: 0;
+    opacity: 0;
+    margin-bottom: 0px;
+}
+
+.sidebox,
+.utilitybox,
+.moneybox {
+    width: 380px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    opacity: 1;
+    transition: all 0.5s;
+    background-color: var(--sub-panel-color);
+    margin-bottom: 10px;
+}
+
+.sidebox .title_container {
+    color: var(--white-full);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebox {
+    align-items: center;
+}
+
+.sidebox .title_container>div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.sidebox.right {
+    flex-direction: row-reverse;
+}
+
+.sidebox.right .title_container>div {
+    flex-direction: row-reverse;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.sidebox.left .title_container>div {
+    flex-direction: row;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.sidebox .image_container {
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.sidebox .image_container img {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+
+.utilitybox {
+    flex-direction: column;
+}
+
+.utilitybox .title_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.utilitybox .title {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.utilitybox.CT .title {
+    color: var(--main-ct);
+}
+
+.utilitybox.T .title {
+    color: var(--main-t);
+}
+
+.utilitybox .grenades_container {
+    display: flex;
+    flex: 1;
+
+    height: 45px;
+}
+
+.utilitybox .grenades_container .grenade_container {
+    display: flex;
+    flex: 1;
+    color: var(--white-full);
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.utilitybox .grenades_container .grenade_container img {
+    max-height: 40px;
+}
+
+.grenade_image.CT {
+    /* Alter between Komodo's Color New and Default */
+    filter: invert(100%) brightness(0%) invert(68%) sepia(50%) saturate(2601%) hue-rotate(178deg) brightness(105%) contrast(91%);
+    /* filter: invert(100%) brightness(0%) invert(75%) sepia(4%) saturate(5821%) hue-rotate(175deg) brightness(68%) contrast(87%); */
+}
+
+.grenade_image.T {
+    /* Alter between Komodo's Color New and Default */
+    filter: invert(100%) brightness(0%) invert(66%) sepia(64%) saturate(450%) hue-rotate(6deg) brightness(110%) contrast(88%);
+    /* filter: invert(100%) brightness(0%) invert(56%) sepia(76%) saturate(1711%) hue-rotate(15deg) brightness(96%) contrast(87%); */
+}
+
+.utilitybox .grenades_container.right {
+    flex-direction: row-reverse;
+}
+
+.moneybox.right {
+    flex-direction: row-reverse;
+}
+
+.moneybox .money_container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.moneybox.CT .money_container .title {
+    color: var(--main-ct);
+}
+
+.moneybox.T .money_container .title {
+    color: var(--main-t);
+}
+
+.moneybox .money_container .title {
+    height: 25px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.moneybox .money_container .value {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--white-full);
+}
+
+.moneybox .loss_container {
+    width: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.moneybox .loss_container .loss-box {
+    height: 16px;
+    width: 100%;
+    background-color: var(--white-dull);
+    margin-top: 2px;
+}
+
+.moneybox .loss_container .loss-box.active.CT {
+    background-color: var(--main-ct);
+}
+
+.moneybox .loss_container .loss-box.active.T {
+    background-color: var(--main-t);
+}
