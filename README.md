@@ -112,6 +112,20 @@ This will create a zip file for you to drag into the HUD Manager
 
 - Left Ctrl + B
   > Makes Radar Invisible
+  
+- Left Ctrl + U
+  > Toggle Minimal HUD
+  
+## Display Settings
+
+- Type in Left box's title/subtitle, or right box's title/subtitle
+  > Will display text and image (if applicable)
+
+- Type 'hide' in Left box's title or Right box's title
+  > Will hide the box
+  
+- Type 'image' in Left box's title or Right box's title
+  > Will use the image centered in the box (best practice is to fill the whole box in your image)
 
 <!-- CONTRIBUTING -->
 

@@ -1,18 +1,21 @@
-[
-    {
-        "bind":"Ctrl+B",
-        "action":"toggleRadar"
+[{
+        "bind": "Ctrl+B",
+        "action": "toggleRadar"
     },
     {
-        "bind":"Alt+B",
-        "action":"radarBigger"
+        "bind": "Alt+B",
+        "action": "radarBigger"
     },
     {
-        "bind":"Alt+S",
-        "action":"radarSmaller"
+        "bind": "Alt+S",
+        "action": "radarSmaller"
     },
     {
-        "bind":"Alt+T",
-        "action":"toggleTrivia"
+        "bind": "Alt+T",
+        "action": "toggleTrivia"
+    },
+    {
+        "bind": "Alt+U",
+        "action": "toggleMinimal"
     }
 ]

@@ -1,3 +1,15 @@
+.layout .minimal {
+    transition: opacity 0.5s;
+}
+
+.layout .minimal.minimal {
+    opacity: 0;
+}
+
+.layout .minimal.full {
+    opacity: 1;
+}
+
 .teambox {
     position: fixed;
     bottom: 0px;
@@ -7,8 +19,13 @@
     transition: opacity 0.5s;
 }
 
-.teambox.hide {
+.teambox.minimal {
+    display: none;
     opacity: 0;
+}
+
+.teambox.full {
+    opacity: 1;
 }
 
 .teambox.left {
@@ -519,13 +536,14 @@ img.weapon.active {
 .players_alive {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 210px;
     /* background-color: var(--sub-panel-color); */
 }
 
 .players_alive .counter_container {
     display: flex;
     height: 50px;
+    width: 210px;
 }
 
 .vs_counter {
@@ -552,6 +570,7 @@ img.weapon.active {
     text-transform: uppercase;
     text-align: center;
     height: 20px;
+    width: 210px;
     font-size: 14px;
     display: flex;
     align-items: center;

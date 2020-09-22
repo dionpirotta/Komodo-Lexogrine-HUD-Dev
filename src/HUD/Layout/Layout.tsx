@@ -25,6 +25,7 @@ interface State {
   winner: Team | null;
   showWin: boolean;
   forceHide: boolean;
+  minimal: boolean;
 }
 
 export default class Layout extends React.Component<Props, State> {
@@ -34,6 +35,7 @@ export default class Layout extends React.Component<Props, State> {
       winner: null,
       showWin: false,
       forceHide: false,
+      minimal: false,
     };
   }
 
@@ -51,6 +53,9 @@ export default class Layout extends React.Component<Props, State> {
       } else if (state === "hide") {
         this.setState({ forceHide: true });
       }
+    });
+    actions.on("toggleMinimal", () => {
+      this.setState((state) => ({ minimal: !state.minimal }));
     });
   }
 
@@ -77,57 +82,58 @@ export default class Layout extends React.Component<Props, State> {
 
     return (
       <div className="layout">
-        <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>
-          <div className={`bar ${left.side}`}></div>
-          <div className={`players_alive`}>
-            <div className="title_container">Players Alive</div>
-            <div className="counter_container">
-              <div className={`team_counter ${left.side}`}>{leftPlayers.filter((player) => player.state.health > 0).length}</div>
-              <div className={`vs_counter`}>VS</div>
-              <div className={`team_counter ${right.side}`}>{rightPlayers.filter((player) => player.state.health > 0).length}</div>
-            </div>
-          </div>
-          <div className={`bar ${right.side}`}></div>
-        </div>
-        {/* <Killfeed /> */}
         <Overview match={match} map={game.map} players={game.players || []} />
-        <RadarMaps match={match} map={game.map} game={game} />
         <MatchBar map={game.map} phase={game.phase_countdowns} bomb={game.bomb} />
-        <MapSeries teams={[left, right]} match={match} isFreezetime={isFreezetime} map={game.map} />
 
         <SeriesBox map={game.map} phase={game.phase_countdowns} match={match} />
         <Observed player={game.player} veto={this.getVeto()} round={game.map.round + 1} />
 
         <Tournament />
-
-        <TeamBox team={left} players={leftPlayers} side="left" current={game.player} isFreezetime={isFreezetime} />
-        <TeamBox team={right} players={rightPlayers} side="right" current={game.player} isFreezetime={isFreezetime} />
-
         {/* <Trivia /> */}
 
-        <div className={"boxes left"}>
-          <SideBox side="left" hide={forceHide} />
-          <UtilityLevel team={left.side} side="left" players={game.players} show={isFreezetime && !forceHide} />
-          <MoneyBox
-            team={left.side}
-            side="left"
-            loss={left.consecutive_round_losses * 500 + 1400}
-            equipment={leftPlayers.map((player) => player.state.equip_value).reduce((pre, now) => pre + now, 0)}
-            money={leftPlayers.map((player) => player.state.money).reduce((pre, now) => pre + now, 0)}
-            show={isFreezetime && !forceHide}
-          />
-        </div>
-        <div className={"boxes right"}>
-          <SideBox side="right" hide={forceHide} />
-          <UtilityLevel team={right.side} side="right" players={game.players} show={isFreezetime && !forceHide} />
-          <MoneyBox
-            team={right.side}
-            side="right"
-            loss={right.consecutive_round_losses * 500 + 1400}
-            equipment={rightPlayers.map((player) => player.state.equip_value).reduce((pre, now) => pre + now, 0)}
-            money={rightPlayers.map((player) => player.state.money).reduce((pre, now) => pre + now, 0)}
-            show={isFreezetime && !forceHide}
-          />
+        <div className={`minimal ${this.state.minimal ? "minimal" : "full"}`}>
+          <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>
+            <div className={`bar ${left.side}`}></div>
+            <div className={`players_alive`}>
+              <div className="title_container">Players Alive</div>
+              <div className="counter_container">
+                <div className={`team_counter ${left.side}`}>{leftPlayers.filter((player) => player.state.health > 0).length}</div>
+                <div className={`vs_counter`}>VS</div>
+                <div className={`team_counter ${right.side}`}>{rightPlayers.filter((player) => player.state.health > 0).length}</div>
+              </div>
+            </div>
+            <div className={`bar ${right.side}`}></div>
+          </div>
+          <Killfeed />
+          <RadarMaps match={match} map={game.map} game={game} />
+          <MapSeries teams={[left, right]} match={match} isFreezetime={isFreezetime} map={game.map} />
+          <TeamBox team={left} players={leftPlayers} side="left" current={game.player} isFreezetime={isFreezetime} />
+          <TeamBox team={right} players={rightPlayers} side="right" current={game.player} isFreezetime={isFreezetime} />
+
+          <div className={"boxes left"}>
+            <SideBox side="left" hide={forceHide} />
+            <UtilityLevel team={left.side} side="left" players={game.players} show={isFreezetime && !forceHide} />
+            <MoneyBox
+              team={left.side}
+              side="left"
+              loss={left.consecutive_round_losses * 500 + 1400}
+              equipment={leftPlayers.map((player) => player.state.equip_value).reduce((pre, now) => pre + now, 0)}
+              money={leftPlayers.map((player) => player.state.money).reduce((pre, now) => pre + now, 0)}
+              show={isFreezetime && !forceHide}
+            />
+          </div>
+          <div className={"boxes right"}>
+            <SideBox side="right" hide={forceHide} />
+            <UtilityLevel team={right.side} side="right" players={game.players} show={isFreezetime && !forceHide} />
+            <MoneyBox
+              team={right.side}
+              side="right"
+              loss={right.consecutive_round_losses * 500 + 1400}
+              equipment={rightPlayers.map((player) => player.state.equip_value).reduce((pre, now) => pre + now, 0)}
+              money={rightPlayers.map((player) => player.state.money).reduce((pre, now) => pre + now, 0)}
+              show={isFreezetime && !forceHide}
+            />
+          </div>
         </div>
       </div>
     );

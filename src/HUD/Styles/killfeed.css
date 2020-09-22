@@ -1,55 +1,63 @@
 .killfeed {
     position: fixed;
-    right: 20px;
-    top: 93px;
+    right: 10px;
+    top: 90px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
+/* .killfeed .single_kill:nth-child(1) {
+    margin-right: calc(-100% - 10px);
+} */
+
 @keyframes KillLifeCycle {
     0% {
         opacity: 0;
-        height: 0;
+        /* height: 0; */
+        margin-right: calc(-100% - 10px);
     }
 
     5% {
         opacity: 1;
-        height: 38px;
+        /* height: 30px; */
     }
 
     95% {
         opacity: 1;
-        height: 38px;
+        /* height: 30px; */
     }
 
     100% {
-        opacity: 0;
-        height: 0;
+        opacity: 1;
+        /* height: 30px; */
+        margin-right: 0px;
     }
 }
 
 .killfeed .single_kill {
     display: flex;
     flex-direction: row;
-    background-color: rgba(0, 0, 0, 0.64);
+    background-color: var(--main-panel-color);
     margin-bottom: 5px;
-    color: white;
-    animation: KillLifeCycle 5s linear 1;
+    color: var(--white-full);
+    animation: KillLifeCycle .1s ease-out 1;
     animation-fill-mode: forwards;
     /**/
-    height: 31px;
+    height: 30px;
     font-size: 14px;
     overflow: hidden;
     align-items: center;
-    font-family: Montserrat;
-    font-weight: 500;
-    padding-left: 15px;
-    padding-right: 15px;
+    font-weight: 600;
+    /* padding-left: 15px;
+    padding-right: 15px; */
 }
 
 .killfeed .single_kill img.weapon {
-    max-height: 28px;
+    max-height: 24px;
+    margin-left: 2px;
+    margin-right: 2px;
+    /* margin-right: 4px; */
 }
 
 .killfeed .single_kill img.weapon {
@@ -58,6 +66,7 @@
 
 .killfeed .single_kill.hide {
     transition: height 1s, padding 1s, opacity 1s, margin 1s;
+    /* transition: opacity 1s, margin 1s; */
     opacity: 0;
     height: 0;
     margin: 0;
@@ -70,7 +79,6 @@
 }
 
 .killfeed .single_kill div {
-    margin: 10px;
     display: flex;
     align-items: center;
 }
@@ -93,25 +101,45 @@
 .killfeed .single_kill .flash_kill,
 .killfeed .single_kill .smoke_kill,
 .killfeed .single_kill .noscope_kill {
-    max-height: 20px;
-    margin-left: 5px;
+    max-height: 18px;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .killfeed .single_kill .flash_assist {
     margin-left: 0;
-    margin-right: 5px;
+    margin-right: 4px;
 }
 
 .killfeed .single_kill .plus {
-    margin-left: 0;
+    margin-left: 4px;
     font-weight: 600;
-    margin-right: 8px;
-}
-
-.killfeed .single_kill .way .wallbang {
-    max-height: 24px;
+    margin-right: 4px;
 }
 
 .killfeed .single_kill .assister_name {
     margin-left: 0px;
+}
+
+.killfeed .single_kill .bar {
+    width: 10px;
+    height: 40px;
+}
+
+.killfeed .single_kill .bar.left {
+    left: 0;
+    margin-right: 6px;
+}
+
+.killfeed .single_kill .bar.right {
+    right: 0;
+    margin-left: 6px;
+}
+
+.killfeed .single_kill .bar.CT {
+    background-color: var(--color-new-ct);
+}
+
+.killfeed .single_kill .bar.T {
+    background-color: var(--color-new-t);
 }
