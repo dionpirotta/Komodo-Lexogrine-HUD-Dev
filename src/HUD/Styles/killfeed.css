@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    max-width: 380px;
 }
 
 /* .killfeed .single_kill:nth-child(1) {
@@ -45,6 +46,7 @@
     animation-fill-mode: forwards;
     /**/
     height: 30px;
+    max-width: 380px;
     font-size: 14px;
     overflow: hidden;
     align-items: center;
@@ -119,6 +121,8 @@
 
 .killfeed .single_kill .assister_name {
     margin-left: 0px;
+    max-width: 70px;
+    overflow: hidden;
 }
 
 .killfeed .single_kill .bar {
@@ -142,4 +146,14 @@
 
 .killfeed .single_kill .bar.T {
     background-color: var(--color-new-t);
+}
+
+.killfeed .single_kill .killer_name {
+    max-width: 80px;
+    overflow: hidden;
+}
+
+.killfeed .single_kill .victim_name {
+    max-width: 80px;
+    overflow: hidden;
 }

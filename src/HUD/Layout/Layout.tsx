@@ -15,6 +15,7 @@ import Killfeed from "../Killfeed/Killfeed";
 import MapSeries from "./../MatchBar/MapSeries";
 import Overview from "../Overview/Overview";
 import Tournament from "../Tournament/Tournament";
+import Watermark from "../Watermark/Watermark";
 
 interface Props {
   game: CSGO;
@@ -89,7 +90,8 @@ export default class Layout extends React.Component<Props, State> {
         <Observed player={game.player} veto={this.getVeto()} round={game.map.round + 1} />
 
         <Tournament />
-        {/* <Trivia /> */}
+        <Trivia />
+        <Watermark />
 
         <div className={`minimal ${this.state.minimal ? "minimal" : "full"}`}>
           <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>

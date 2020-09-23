@@ -48,6 +48,18 @@ export default class Killfeed extends React.Component<any, { events: (BombEvent 
         if (this.state.events.length > 0) {
           this.setState({ events: [] });
         }
+      } else if (data.round && data.map.phase === "intermission") {
+        if (this.state.events.length > 0) {
+          this.setState({ events: [] });
+        }
+      } else if (data.round && data.map.phase === "warmup") {
+        if (this.state.events.length > 0) {
+          this.setState({ events: [] });
+        }
+      } else if (data.round && data.map.phase === "gameover") {
+        if (this.state.events.length > 0) {
+          this.setState({ events: [] });
+        }
       } else if (data.round) {
         if (this.state.events.length > 11) {
           this.setState({ events: [] });

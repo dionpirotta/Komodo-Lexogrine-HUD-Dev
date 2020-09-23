@@ -8,23 +8,25 @@
     height: 90px;
     bottom: 190px;
     opacity: 1;
-    transition: opacity 1s;
+    transition: opacity .5s;
 
     font-size: 16pt;
 }
 
 .trivia_container .title {
-    height: 30px;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
+    height: 28px;
+    line-height: 30px;
+    padding-left: 10px;
     font-weight: bold;
-    padding-top: 10px;
+    padding-top: 4px;
+    overflow: hidden;
 }
 
 .trivia_container .content {
-    padding-left: 30px;
-    padding-bottom: 15px;
+    padding-left: 10px;
+    overflow: hidden;
+    height: 60px;
+    line-height: 30px;
 }
 
 .trivia_container.hide {
