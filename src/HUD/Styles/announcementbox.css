@@ -1,0 +1,107 @@
+.announcement_box {
+    position: fixed;
+    display: flex;
+    width: 500px;
+    height: 40px;
+    color: var(--white-full);
+    align-items: center;
+    transition: top 0.5s;
+}
+
+.announcement_box.right {
+    left: calc(50% + 60px);
+    justify-content: flex-start;
+}
+
+.announcement_box.left {
+    right: calc(50% + 60px);
+    justify-content: flex-end;
+}
+
+.announcement_box.show {
+    top: 0px;
+}
+
+.announcement_box.hide {
+    top: -40px;
+}
+
+.announcement_box .bar {
+    width: 10px;
+    height: 100%;
+}
+
+.announcement_box .bar.T {
+    background-color: var(--main-t);
+}
+
+.announcement_box .bar.CT {
+    background-color: var(--main-ct);
+}
+
+.inside_container {
+    width: 480px;
+    height: 100%;
+    background-color: var(--sub-panel-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.announcement_text {
+    max-width: 480px;
+    line-height: 22px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.announcement_text.T {
+    color: var(--main-t);
+}
+
+.announcement_text.CT {
+    color: var(--main-ct);
+}
+
+.announcement_text.bomb_active {
+    display: none;
+}
+
+/* .bomb_planted {
+    width: 480px;
+    height: 100%;
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+} */
+
+.bomb_planted.bomb_active {
+    width: 480px;
+    height: 100%;
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+}
+
+.bomb_bar {
+    width: 480px;
+    height: 50%;
+    background-color: var(--color-bomb);
+}
+
+.defuse_holder {
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 50%;
+}
+
+.defuse_bar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-defuse);
+}
+
+.defuser {}

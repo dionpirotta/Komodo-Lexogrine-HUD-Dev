@@ -49,6 +49,6 @@
 }
 
 .veto_entry .map_name.active {
-    text-shadow: 0 0 15px var(--white-full);
+    text-shadow: 0 0 10px var(--white-full);
     font-weight: 600;
 }

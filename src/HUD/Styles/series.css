@@ -11,14 +11,6 @@
     transform: translateX(-50%);
 }
 
-#series .CT {
-    color: var(--main-ct);
-}
-
-#series .T {
-    color: var(--main-t);
-}
-
 #series .wins_bar {
     display: flex;
     flex-direction: row;

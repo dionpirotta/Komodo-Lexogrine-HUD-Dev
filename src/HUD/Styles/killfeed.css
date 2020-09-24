@@ -123,6 +123,7 @@
     margin-left: 0px;
     max-width: 70px;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .killfeed .single_kill .bar {
@@ -151,9 +152,11 @@
 .killfeed .single_kill .killer_name {
     max-width: 80px;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .killfeed .single_kill .victim_name {
     max-width: 80px;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
