@@ -178,11 +178,7 @@ export default class TeamBox extends React.Component<IProps, IState> {
 
     return (
       <div id={`matchbar`}>
-        <div className={`bar left ${left.side}`}></div>
         <TeamScore team={left} orientation={"left"} timer={leftTimer} showWin={winState.show && winState.side === "left"} />
-        <div className={`bar left ${left.side}`}></div>
-        <div className={`score left ${left.side}`}>{left.score}</div>
-        <div className={`bar left ${left.side}`}></div>
         <div id="timer">
           <div id={`round_timer_text`} className={isPlanted ? "hide" : ""}>
             {time}
@@ -192,11 +188,7 @@ export default class TeamBox extends React.Component<IProps, IState> {
           </div>
           <Bomb />
         </div>
-        <div className={`bar right ${right.side}`}></div>
-        <div className={`score right ${right.side}`}>{right.score}</div>
-        <div className={`bar right ${right.side}`}></div>
         <TeamScore team={right} orientation={"right"} timer={rightTimer} showWin={winState.show && winState.side === "right"} />
-        <div className={`bar right ${right.side}`}></div>
       </div>
     );
   }

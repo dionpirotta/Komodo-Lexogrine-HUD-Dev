@@ -25,6 +25,16 @@ code {
   height: 100%;
 }
 
+.layout.active {
+  opacity: 1;
+  transition: opacity 0.25s;
+}
+
+.layout.inactive {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
 :root {
   --main-panel-color: rgba(12, 15, 18, 0.85);
   --sub-panel-color: rgba(12, 15, 18, 0.70);

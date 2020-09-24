@@ -103,7 +103,7 @@
 }
 
 #matchbar .team {
-    width: 400px;
+    width: 500px;
     display: flex;
     align-items: center;
 }
@@ -148,7 +148,7 @@
     max-height: 90%;
 }
 
-#matchbar .score {
+#matchbar .team-score {
     display: flex;
     flex-direction: row;
     width: 70px;

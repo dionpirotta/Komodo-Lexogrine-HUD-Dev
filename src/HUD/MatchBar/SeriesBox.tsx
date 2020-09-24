@@ -56,18 +56,18 @@ export default class SeriesBox extends React.Component<Props, State> {
     );
   };
   componentDidMount() {
-    GSI.on("roundEnd", (score) => {
-      this.showText("WINS THE ROUND", score.winner.orientation);
-    });
-    GSI.on("defuseStart", (player) => {
-      this.showText(`${player.name} IS DEFUSING THE BOMB`, player.team.orientation);
-    });
-    GSI.on("bombPlantStart", (player) => {
-      this.showText(`${player.name} IS PLANTING THE BOMB`, player.team.orientation, 3200);
-    });
-    GSI.on("bombPlant", (player) => {
-      this.showText(`BOMB PLANTED`, player.team.orientation, 3000);
-    });
+    // GSI.on("roundEnd", (score) => {
+    //   this.showText("WINS THE ROUND", score.winner.orientation);
+    // });
+    // GSI.on("defuseStart", (player) => {
+    //   this.showText(`${player.name} IS DEFUSING THE BOMB`, player.team.orientation);
+    // });
+    // GSI.on("bombPlantStart", (player) => {
+    //   this.showText(`${player.name} IS PLANTING THE BOMB`, player.team.orientation, 3200);
+    // });
+    // GSI.on("bombPlant", (player) => {
+    //   this.showText(`BOMB PLANTED`, player.team.orientation, 3000);
+    // });
     GSI.on("data", (data) => {
       if (data.phase_countdowns.phase === "timeout_ct") {
         this.showText(`TIMEOUTS REMAINING: ${data.map.team_ct.timeouts_remaining}`, data.map.team_ct.orientation);

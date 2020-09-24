@@ -99,31 +99,37 @@ This will create a zip file for you to drag into the HUD Manager
 ## Keybinds
 
 - Left Alt + S
-
   > Makes the Radar 20px Smaller
 
 - Left Alt + B
-
   > Makes the Radar 20px Bigger
 
 - Left Alt + T
-
   > Shows the Trivia Box
 
 - Left Ctrl + B
   > Makes Radar Invisible
-  
+
 - Left Ctrl + U
   > Toggle Minimal HUD
-  
+
+- Left Alt + R
+  > Swap Teams on top bar
+
+- Left Alt + F
+  > Refresh HUD
+
+- Left Alt + O
+  > Toggle HUD On/OFF
+
 ## Display Settings
 
 - Type in Left box's title/subtitle, or right box's title/subtitle
+
   > Will display text and image (if applicable)
 
 - Type 'hide' in Left box's title or Right box's title
   > Will hide the box
-  
 - Type 'image' in Left box's title or Right box's title
   > Will use the image centered in the box (best practice is to fill the whole box in your image)
 

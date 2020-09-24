@@ -26,6 +26,7 @@ interface State {
   winner: Team | null;
   showWin: boolean;
   forceHide: boolean;
+  active: boolean;
   minimal: boolean;
 }
 
@@ -36,6 +37,7 @@ export default class Layout extends React.Component<Props, State> {
       winner: null,
       showWin: false,
       forceHide: false,
+      active: true,
       minimal: false,
     };
   }
@@ -54,6 +56,9 @@ export default class Layout extends React.Component<Props, State> {
       } else if (state === "hide") {
         this.setState({ forceHide: true });
       }
+    });
+    actions.on("toggleActive", () => {
+      this.setState((state) => ({ active: !state.active }));
     });
     actions.on("toggleMinimal", () => {
       this.setState((state) => ({ minimal: !state.minimal }));
@@ -82,7 +87,7 @@ export default class Layout extends React.Component<Props, State> {
     const { forceHide } = this.state;
 
     return (
-      <div className="layout">
+      <div className={`layout ${this.state.active ? "active" : "inactive"}`}>
         <Overview match={match} map={game.map} players={game.players || []} />
         <MatchBar map={game.map} phase={game.phase_countdowns} bomb={game.bomb} />
 
