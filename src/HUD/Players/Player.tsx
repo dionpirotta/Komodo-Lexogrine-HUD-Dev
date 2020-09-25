@@ -16,6 +16,7 @@ interface IProps {
 
 interface IState {
   startRoundMoney: number;
+  avatar: boolean;
 }
 
 export default class PlayerBox extends React.Component<IProps, IState> {
@@ -23,6 +24,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       startRoundMoney: 800,
+      avatar: true,
     };
   }
 
@@ -45,7 +47,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
       <div className={`player ${isDead ? "dead" : ""}`}>
         <div className="player_data">
           <div className={`player_side_bar ${player.team.side}`} />
-          <Avatar steamid={player.steamid} showSkull={false} />
+          <Avatar steamid={player.steamid} />
           <div className="dead-stats">
             <div className="labels">
               <div className="stat-label">K</div>

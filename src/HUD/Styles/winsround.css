@@ -1,0 +1,49 @@
+.wins_round {
+    position: fixed;
+    display: flex;
+    width: 500px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.5s;
+}
+
+.wins_round.show {
+    top: 0px;
+}
+
+.wins_round.hide {
+    top: -40px;
+}
+
+.wins_round .bar {
+    width: 10px;
+    height: 100%;
+}
+
+.wins_round .bar.T {
+    background-color: var(--main-t);
+}
+
+.wins_round .bar.CT {
+    background-color: var(--main-ct);
+}
+
+.text_container {
+    width: 480px;
+    height: 100%;
+    background-color: var(--main-panel-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.text_container.T {
+    color: var(--main-t);
+}
+
+.text_container.CT {
+    color: var(--main-ct);
+}

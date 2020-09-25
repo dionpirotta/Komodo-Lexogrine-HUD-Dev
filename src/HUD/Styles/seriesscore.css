@@ -3,18 +3,15 @@
     display: flex;
     width: 90px;
     height: 40px;
-    color: var(--white-full);
     align-items: center;
     transition: top 0.5s;
 }
 
 .series_score.right {
-    left: calc(50% + 60px);
     justify-content: flex-start;
 }
 
 .series_score.left {
-    right: calc(50% + 60px);
     justify-content: flex-end;
 }
 
@@ -46,6 +43,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.series_score.right .box_container {
+    flex-direction: row;
 }
 
 .series_score.left .box_container {

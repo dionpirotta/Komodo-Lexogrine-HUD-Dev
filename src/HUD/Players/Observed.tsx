@@ -10,6 +10,7 @@ import Armor from "./../Indicators/Armor";
 import Bomb from "./../Indicators/Bomb";
 import Defuse from "./../Indicators/Defuse";
 import { Veto } from "../../api/interfaces";
+import { actions } from "./../../App";
 
 import { HealthCT, HealthT, HealthFullCT, HealthFullT, BulletsCT, BulletsT, SkullCT, SkullT, DefuseCT, BombT, Bomb as BombD } from "./../../assets/Icons";
 
@@ -24,7 +25,28 @@ class Statistic extends React.PureComponent<{ label: string; value: string | num
   }
 }
 
-export default class Observed extends React.Component<{ player: Player | null; veto: Veto | null; round: number }> {
+interface Props {
+  player: Player | null;
+  veto: Veto | null;
+  round: number;
+}
+
+interface State {
+  show: boolean;
+}
+
+export default class Observed extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      show: true,
+    };
+  }
+  componentDidMount() {
+    actions.on("toggleAvatar", () => {
+      this.setState((state) => ({ show: !state.show }));
+    });
+  }
   getAdr = () => {
     const { veto, player } = this.props;
     if (!player || !veto || !veto.rounds) return null;
@@ -52,7 +74,7 @@ export default class Observed extends React.Component<{ player: Player | null; v
       <div className={`observed ${player.team.side}`}>
         <div className="main_row">
           <div className="empty_obs_bar"></div>
-          <div className="under_avatar">
+          <div className={`under_avatar ${!this.state.show ? "hide" : ""}`}>
             <Avatar steamid={player.steamid} />
           </div>
           <TeamLogo team={player.team} />

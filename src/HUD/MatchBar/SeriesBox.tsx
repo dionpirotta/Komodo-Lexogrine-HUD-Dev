@@ -126,24 +126,24 @@ export default class SeriesBox extends React.Component<Props, State> {
     const right = map.team_ct.orientation === "left" ? map.team_t : map.team_ct;
     return (
       <div id="series">
-        <AnnouncementBox
+        {/* <AnnouncementBox
           team={left}
           show={this.state.left.alertType.bombPlanted || this.state.left.alertType.bombPlanting}
           fontsize={24}
           fontweight={400}
           text={this.state.left.text}
           bombPlanted={false}
-        />
-        <AnnouncementBox team={left} show={this.state.left.alertType.roundWon} fontsize={26} fontweight={600} text={this.state.left.text} bombPlanted={false} />
+        /> */}
+        {/* <AnnouncementBox team={left} show={this.state.left.alertType.roundWon} fontsize={26} fontweight={600} text={this.state.left.text} bombPlanted={false} /> */}
         <SeriesScore team={left} show={this.state.left.mapWins} wonmaps={amountOfMaps} wins={left_wins} />
         <div id="series_container">
           <div id="series_text">BEST OF {bo}</div>
         </div>
-        {/* <SeriesScore team={right} show={this.state.right.mapWins} wonmaps={amountOfMaps} wins={right_wins} /> */}
-        <SeriesScore team={right} show={false} wonmaps={amountOfMaps} wins={right_wins} />
-        <AnnouncementBox team={right} show={this.state.right.alertType.roundWon} fontsize={26} fontweight={600} text={this.state.right.text} bombPlanted={false} />
+        <SeriesScore team={right} show={this.state.right.mapWins} wonmaps={amountOfMaps} wins={right_wins} />
+        {/* <SeriesScore team={right} show={false} wonmaps={amountOfMaps} wins={right_wins} /> */}
+        {/* <AnnouncementBox team={right} show={this.state.right.alertType.roundWon} fontsize={26} fontweight={600} text={this.state.right.text} bombPlanted={false} /> */}
         {/* <AnnouncementBox team={right} show={this.state.right.alertType.bombPlanted || this.state.right.alertType.bombPlanting} fontsize={24} fontweight={400} text={this.state.right.text} /> */}
-        <AnnouncementBox team={right} show={true} fontsize={24} fontweight={400} text={this.state.right.text} bombPlanted={true} />
+        {/* <AnnouncementBox team={right} show={true} fontsize={24} fontweight={400} text={this.state.right.text} bombPlanted={true} /> */}
       </div>
     );
   }

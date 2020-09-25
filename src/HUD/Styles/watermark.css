@@ -5,11 +5,10 @@
     background-color: var(--sub-panel-color);
     color: var(--white-full);
     width: 300px;
-    height: 40px;
+    height: 70px;
     top: 130px;
     opacity: 1;
     transition: opacity .5s;
-    font-size: 16pt;
 
     animation-delay: 2s;
     animation: ShowAndHide 5s ease-out 1;
@@ -17,9 +16,18 @@
 }
 
 .watermark_container .title {
+    font-size: 16pt;
     height: 30px;
     line-height: 30px;
     font-weight: bold;
+    padding-top: 4px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.watermark_container .hex {
+    height: 20px;
+    line-height: 30px;
     padding-top: 4px;
     overflow: hidden;
     text-align: center;

@@ -116,7 +116,7 @@
     height: 25px;
     font-weight: 600;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .utilitybox .title {
@@ -139,6 +139,7 @@
     flex: 1;
 
     height: 45px;
+    margin-top: 3px;
 }
 
 .utilitybox .grenades_container .grenade_container {

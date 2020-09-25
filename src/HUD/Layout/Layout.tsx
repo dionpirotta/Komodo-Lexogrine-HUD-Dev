@@ -16,6 +16,7 @@ import MapSeries from "./../MatchBar/MapSeries";
 import Overview from "../Overview/Overview";
 import Tournament from "../Tournament/Tournament";
 import Watermark from "../Watermark/Watermark";
+import AlertsBar from "../MatchBar/AlertsBar";
 
 interface Props {
   game: CSGO;
@@ -91,7 +92,8 @@ export default class Layout extends React.Component<Props, State> {
         <Overview match={match} map={game.map} players={game.players || []} />
         <MatchBar map={game.map} phase={game.phase_countdowns} bomb={game.bomb} />
 
-        <SeriesBox map={game.map} phase={game.phase_countdowns} match={match} />
+        <AlertsBar map={game.map} phase={game.phase_countdowns} match={match} />
+        {/* <SeriesBox map={game.map} phase={game.phase_countdowns} match={match} /> */}
         <Observed player={game.player} veto={this.getVeto()} round={game.map.round + 1} />
 
         <Tournament />

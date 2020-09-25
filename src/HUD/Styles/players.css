@@ -96,12 +96,20 @@
     justify-content: flex-end;
 }
 
+.teambox .player .player_data .avatar.hide {
+    display: none;
+}
+
 .teambox.right .player .player_data .avatar {
     justify-content: flex-start;
 }
 
 .teambox .player.dead .player_data .avatar {
     filter: grayscale(100%);
+}
+
+.teambox .player.dead .player_data .avatar.hide {
+    display: none;
 }
 
 .teambox .player .player_data .avatar img {
