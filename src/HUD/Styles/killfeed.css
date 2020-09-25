@@ -1,11 +1,11 @@
 .killfeed {
-    position: fixed;
-    right: 10px;
-    top: 90px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    max-width: 380px;
+  position: fixed;
+  right: 10px;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 380px;
 }
 
 /* .killfeed .single_kill:nth-child(1) {
@@ -13,88 +13,88 @@
 } */
 
 @keyframes KillLifeCycle {
-    0% {
-        opacity: 0;
-        /* height: 0; */
-        margin-right: calc(-100% - 10px);
-    }
+  0% {
+    opacity: 0;
+    /* height: 0; */
+    margin-right: calc(-100% - 10px);
+  }
 
-    5% {
-        opacity: 1;
-        /* height: 30px; */
-    }
+  5% {
+    opacity: 1;
+    /* height: 30px; */
+  }
 
-    95% {
-        opacity: 1;
-        /* height: 30px; */
-    }
+  95% {
+    opacity: 1;
+    /* height: 30px; */
+  }
 
-    100% {
-        opacity: 1;
-        /* height: 30px; */
-        margin-right: 0px;
-    }
+  100% {
+    opacity: 1;
+    /* height: 30px; */
+    margin-right: 0px;
+  }
 }
 
 .killfeed .single_kill {
-    display: flex;
-    flex-direction: row;
-    background-color: var(--main-panel-color);
-    margin-bottom: 5px;
-    color: var(--white-full);
-    animation: KillLifeCycle .1s ease-out 1;
-    animation-fill-mode: forwards;
-    /**/
-    height: 30px;
-    max-width: 380px;
-    font-size: 14px;
-    overflow: hidden;
-    align-items: center;
-    font-weight: 600;
-    /* padding-left: 15px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--main-panel-color);
+  margin-bottom: 5px;
+  color: var(--white-full);
+  animation: KillLifeCycle 0.1s ease-out 1;
+  animation-fill-mode: forwards;
+  /**/
+  height: 30px;
+  max-width: 380px;
+  font-size: 14px;
+  overflow: hidden;
+  align-items: center;
+  font-weight: 600;
+  /* padding-left: 15px;
     padding-right: 15px; */
 }
 
 .killfeed .single_kill img.weapon {
-    max-height: 24px;
-    margin-left: 2px;
-    margin-right: 2px;
-    /* margin-right: 4px; */
+  max-height: 24px;
+  margin-left: 2px;
+  margin-right: 2px;
+  /* margin-right: 4px; */
 }
 
 .killfeed .single_kill img.weapon {
-    filter: invert(0%);
+  filter: invert(0%);
 }
 
 .killfeed .single_kill.hide {
-    transition: height 1s, padding 1s, opacity 1s, margin 1s;
-    /* transition: opacity 1s, margin 1s; */
-    opacity: 0;
-    height: 0;
-    margin: 0;
-    /*height:0px;
+  transition: height 1s, padding 1s, opacity 1s, margin 1s;
+  /* transition: opacity 1s, margin 1s; */
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  /*height:0px;
     padding:0;*/
 }
 
 .killfeed .single_kill.show {
-    opacity: 1;
+  opacity: 1;
 }
 
 .killfeed .single_kill div {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .killfeed .single_kill .way {
-    text-align: center;
+  text-align: center;
 }
 
 .killfeed .single_kill .CT {
-    color: var(--color-new-ct);
+  color: var(--color-new-ct);
 }
 
 .killfeed .single_kill .T {
-    color: var(--color-new-t);
+  color: var(--color-new-t);
 }
 
 .killfeed .single_kill .way .headshot,
@@ -103,60 +103,60 @@
 .killfeed .single_kill .flash_kill,
 .killfeed .single_kill .smoke_kill,
 .killfeed .single_kill .noscope_kill {
-    max-height: 18px;
-    margin-left: 4px;
-    margin-right: 4px;
+  max-height: 18px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .killfeed .single_kill .flash_assist {
-    margin-left: 0;
-    margin-right: 4px;
+  margin-left: 0;
+  margin-right: 2px;
 }
 
 .killfeed .single_kill .plus {
-    margin-left: 4px;
-    font-weight: 600;
-    margin-right: 4px;
+  margin-left: 2px;
+  font-weight: 600;
+  margin-right: 2px;
 }
 
 .killfeed .single_kill .assister_name {
-    margin-left: 0px;
-    max-width: 70px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin-left: 0px;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .killfeed .single_kill .bar {
-    width: 10px;
-    height: 40px;
+  width: 10px;
+  height: 40px;
 }
 
 .killfeed .single_kill .bar.left {
-    left: 0;
-    margin-right: 6px;
+  left: 0;
+  margin-right: 6px;
 }
 
 .killfeed .single_kill .bar.right {
-    right: 0;
-    margin-left: 6px;
+  right: 0;
+  margin-left: 6px;
 }
 
 .killfeed .single_kill .bar.CT {
-    background-color: var(--color-new-ct);
+  background-color: var(--color-new-ct);
 }
 
 .killfeed .single_kill .bar.T {
-    background-color: var(--color-new-t);
+  background-color: var(--color-new-t);
 }
 
 .killfeed .single_kill .killer_name {
-    max-width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .killfeed .single_kill .victim_name {
-    max-width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
