@@ -4,6 +4,7 @@ import "./../Styles/matchbar.css";
 import TeamScore from "./TeamScore";
 import Bomb from "./../Timers/BombTimer";
 import Countdown from "./../Timers/Countdown";
+import PhaseTimer from "./PhaseTimer";
 import { GSI } from "../../App";
 
 function stringToClock(time: string | number, pad = true) {
@@ -23,6 +24,8 @@ interface IProps {
   map: I.Map;
   phase: I.PhaseRaw;
   bomb: I.Bomb | null;
+  leftPlayers: I.Player[];
+  rightPlayers: I.Player[];
 }
 
 export interface Timer {
@@ -163,7 +166,6 @@ export default class TeamBox extends React.Component<IProps, IState> {
     const right = this.props.map.team_ct.orientation === "left" ? this.props.map.team_t : this.props.map.team_ct;
     const bomb = this.props.bomb;
     const isPlanted = bomb && (bomb.state === "defusing" || bomb.state === "planted");
-
     let leftTimer: Timer | null = null,
       rightTimer: Timer | null = null;
     if (defusing.active || planting.active) {
@@ -179,7 +181,7 @@ export default class TeamBox extends React.Component<IProps, IState> {
     return (
       <div id={`matchbar`}>
         <TeamScore team={left} orientation={"left"} timer={leftTimer} showWin={winState.show && winState.side === "left"} />
-        <div id="timer">
+        {/* <div id="timer">
           <div id={`round_timer_text`} className={isPlanted ? "hide" : ""}>
             {time}
           </div>
@@ -187,7 +189,8 @@ export default class TeamBox extends React.Component<IProps, IState> {
             Round {this.props.map.round + 1}
           </div>
           <Bomb />
-        </div>
+        </div> */}
+        <PhaseTimer phase={this.props.phase} map={this.props.map} bomb={this.props.bomb} leftPlayers={this.props.leftPlayers} rightPlayers={this.props.rightPlayers} />
         <TeamScore team={right} orientation={"right"} timer={rightTimer} showWin={winState.show && winState.side === "right"} />
       </div>
     );

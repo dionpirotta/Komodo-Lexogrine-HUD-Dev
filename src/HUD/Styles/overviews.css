@@ -30,11 +30,11 @@
 }
 
 .player-overview.CT .player-overview-stat .panel .filling {
-    background-color: var(--color-new-ct);
+    background-color: var(--main-ct);
 }
 
 .player-overview.T .player-overview-stat .panel .filling {
-    background-color: var(--color-new-t);
+    background-color: var(--main-t);
 }
 
 .player-overview.T .player-overview-stat .panel {

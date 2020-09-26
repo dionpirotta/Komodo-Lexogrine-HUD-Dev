@@ -216,13 +216,13 @@ body,
 }
 
 .map .player.CT .label {
-    /* background: radial-gradient(rgb(61, 141, 224), rgb(42, 49, 119)); */
-    background: var(--color-new-ct);
+    /* background: radial-gradient(var(--main-ct), rgb(42, 49, 119)); */
+    background: var(--main-ct);
 }
 
 .map .player.T .label {
-    /* background: radial-gradient(rgb(255, 129, 0), var(--color-new-t)); */
-    background: var(--color-new-t);
+    /* background: radial-gradient(rgb(255, 129, 0), var(--main-t)); */
+    background: var(--main-t);
 }
 
 .map .player.T.hasBomb .label {

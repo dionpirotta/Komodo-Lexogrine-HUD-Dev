@@ -587,11 +587,11 @@ img.weapon.active {
 }
 
 .players_alive .counter_container .CT {
-    color: var(--color-new-ct);
+    color: var(--main-ct);
 }
 
 .players_alive .counter_container .T {
-    color: var(--color-new-t);
+    color: var(--main-t);
 }
 
 .alive_box .bar {
@@ -600,9 +600,9 @@ img.weapon.active {
 }
 
 .alive_box .bar.CT {
-    background-color: var(--color-new-ct);
+    background-color: var(--main-ct);
 }
 
 .alive_box .bar.T {
-    background-color: var(--color-new-t);
+    background-color: var(--main-t);
 }

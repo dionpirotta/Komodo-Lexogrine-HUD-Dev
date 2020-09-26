@@ -90,11 +90,11 @@
 }
 
 .killfeed .single_kill .CT {
-  color: var(--color-new-ct);
+  color: var(--main-ct);
 }
 
 .killfeed .single_kill .T {
-  color: var(--color-new-t);
+  color: var(--main-t);
 }
 
 .killfeed .single_kill .way .headshot,
@@ -142,11 +142,11 @@
 }
 
 .killfeed .single_kill .bar.CT {
-  background-color: var(--color-new-ct);
+  background-color: var(--main-ct);
 }
 
 .killfeed .single_kill .bar.T {
-  background-color: var(--color-new-t);
+  background-color: var(--main-t);
 }
 
 .killfeed .single_kill .killer_name {

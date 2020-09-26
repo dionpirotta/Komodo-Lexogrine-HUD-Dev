@@ -1,0 +1,52 @@
+.phase_timer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 120px;
+    height: 70px;
+    background-color: var(--main-panel-color);
+}
+
+.text_display.hide {
+    display: none;
+}
+
+.timer_display {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 34px;
+    font-weight: bold;
+    color: var(--white-full);
+}
+
+.round_display {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--white-full);
+}
+
+.image_display {
+    width: 100%;
+    height: 100%;
+}
+
+.image_display.hide {
+    display: none;
+}
+
+.image_display img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6px;
+    max-height: 80%;
+    max-width: 80%;
+}

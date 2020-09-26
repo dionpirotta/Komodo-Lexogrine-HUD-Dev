@@ -90,7 +90,7 @@ export default class Layout extends React.Component<Props, State> {
     return (
       <div className={`layout ${this.state.active ? "active" : "inactive"}`}>
         <Overview match={match} map={game.map} players={game.players || []} />
-        <MatchBar map={game.map} phase={game.phase_countdowns} bomb={game.bomb} />
+        <MatchBar map={game.map} phase={game.phase_countdowns} bomb={game.bomb} leftPlayers={leftPlayers} rightPlayers={rightPlayers} />
 
         <AlertsBar map={game.map} phase={game.phase_countdowns} match={match} />
         {/* <SeriesBox map={game.map} phase={game.phase_countdowns} match={match} /> */}
