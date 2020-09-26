@@ -19,7 +19,7 @@
     align-items: flex-end;
     font-size: 34px;
     font-weight: bold;
-    color: var(--white-full);
+    /* color: var(--white-full); */
 }
 
 .round_display {
@@ -36,6 +36,13 @@
 .image_display {
     width: 100%;
     height: 100%;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .image_display.hide {
