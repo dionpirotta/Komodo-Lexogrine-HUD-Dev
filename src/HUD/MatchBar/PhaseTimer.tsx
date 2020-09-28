@@ -119,11 +119,11 @@ export default class PhaseTimer extends React.Component<Props, State> {
         this.setWhichImageState(true, Pause);
       } else if (this.props.phase.phase === "timeout_t") {
         this.setWhichImageState(true, PauseT);
-        this.setState({ bgColor: "--white-dull" });
+        this.setState({ bgColor: "--color-timeout-t" });
         this.setState({ bgHeight: (100 / timeoutTime) * +this.props.phase.phase_ends_in });
       } else if (this.props.phase.phase === "timeout_ct") {
         this.setWhichImageState(true, PauseCT);
-        this.setState({ bgColor: "--white-dull" });
+        this.setState({ bgColor: "--color-timeout-ct" });
         this.setState({ bgHeight: (100 / timeoutTime) * +this.props.phase.phase_ends_in });
       } else if (this.props.phase.phase === "warmup") {
         this.setWhichImageState(true, Hourglass);

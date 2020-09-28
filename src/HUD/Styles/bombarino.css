@@ -1,0 +1,102 @@
+.bomb_box {
+    position: fixed;
+    display: flex;
+    width: 500px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.5s;
+}
+
+.bomb_box.show {
+    top: 0px;
+}
+
+.bomb_box.hide {
+    top: -40px;
+}
+
+.bomb_box.left {
+    flex-direction: row-reverse;
+}
+
+.bomb_box.right {
+    flex-direction: row;
+}
+
+.bomb_box .bar {
+    width: 10px;
+    height: 100%;
+}
+
+.bomb_box .bar.T {
+    background-color: var(--main-t);
+}
+
+.bomb_box .bar.CT {
+    background-color: var(--main-ct);
+}
+
+.bomb_planted {
+    width: 480px;
+    height: 100%;
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+}
+
+.bomb_inside {
+    width: 400px;
+    height: 100%;
+    background-color: var(--main-panel-color);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.bomb_box.show.left .bomb_inside {
+    align-items: flex-end;
+}
+
+.bomb_box.show.right .bomb_inside {
+    align-items: flex-start;
+}
+
+.bomb_box.show .bomb_bar {
+    width: 400px;
+    height: 50%;
+    background-color: var(--color-bomb);
+    display: flex;
+}
+
+.defuse_holder {
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    height: 50%;
+}
+
+.defuse_bar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-defuse);
+}
+
+.bomb_time {
+    width: 70px;
+    height: 40px;
+    background-color: var(--sub-panel-color);
+    display: flex;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 500;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    color: var(--white-full);
+}
+
+.bomb_text {
+    width: 100%;
+    height: 100%;
+}

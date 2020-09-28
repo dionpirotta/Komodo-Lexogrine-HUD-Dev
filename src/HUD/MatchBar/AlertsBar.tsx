@@ -6,6 +6,7 @@ import SeriesScore from "./SeriesScore";
 import TextAlert from "./TextAlert";
 import "./../Styles/alertsbar.css";
 import maps from "../Radar/LexoRadar/maps";
+import Bombarino from "./Bombarino";
 
 interface Props {
   map: I.Map;
@@ -103,11 +104,8 @@ export default class AlertsBar extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    // TODO dont show the bomb explosion or plant start or plant if the round is over
-
     GSI.on("roundEnd", (score) => {
       console.log("round end called");
-      // TODO may need to remove this for the new bomb stuff when done
       if (this.state[this.props.map.team_t.orientation].alertType.planted) {
         this.state[this.props.map.team_t.orientation].alertType.planted = false;
       }
@@ -116,14 +114,17 @@ export default class AlertsBar extends React.Component<Props, State> {
 
     GSI.on("bombPlantStart", (player) => {
       console.log("bomb plant start called");
-      this.modAlert(`${player.name} is planting`, player.team.orientation, "planting");
+      if (this.props.phase.phase !== "over") {
+        this.modAlert(`${player.name} is planting`, player.team.orientation, "planting");
+      }
     });
 
     GSI.on("bombPlant", (player) => {
-      console.log("bomb planted");
-      this.state[player.team.orientation].alertType.planting = false;
-      // TODO show the bombPlant bit, below is placeholder
-      this.modAlert("PLANTED PLACEHOLDER", player.team.orientation, "planted");
+      if (this.props.phase.phase !== "over") {
+        console.log("bomb planted");
+        this.state[player.team.orientation].alertType.planting = false;
+        this.modAlert("PLANTED", player.team.orientation, "planted");
+      }
     });
 
     GSI.on("defuseStart", (player) => {
@@ -144,8 +145,10 @@ export default class AlertsBar extends React.Component<Props, State> {
     });
 
     GSI.on("bombExplode", () => {
-      console.log("bomb exploded");
-      // check if need to also hide defusing stuff like in defuseStop (ie if dies to bomb explosion whilst defusing, will defuseStop be called as well as bombExplode)
+      if (this.props.phase.phase !== "over") {
+        console.log("bomb exploded");
+        this.modAlertOff(this.props.map.team_ct.orientation, "defusing");
+      }
     });
 
     GSI.on("data", (data) => {
@@ -191,10 +194,9 @@ export default class AlertsBar extends React.Component<Props, State> {
     return (
       <div className="alerts">
         <div className={`side_box left`}>
-          {/* match point */}
-          {/* bomb planted */}
           <TextAlert team={left} show={this.state.left.alertType.teamTimeout} text={this.state.left.text} />
-          <TextAlert team={left} show={this.state.left.alertType.planted} text={this.state.left.text} />
+          <Bombarino team={left} show={this.state.left.alertType.planted} defusing={this.state.right.alertType.defusing} />
+          {/* <TextAlert team={left} show={this.state.left.alertType.planted} text={this.state.left.text} /> */}
           <TextAlert team={left} show={this.state.left.alertType.defusing} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.planting} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.roundWon} text={this.state.left.text} />
@@ -210,7 +212,8 @@ export default class AlertsBar extends React.Component<Props, State> {
           <TextAlert team={right} show={this.state.right.alertType.roundWon} text={this.state.right.text} />
           <TextAlert team={right} show={this.state.right.alertType.planting} text={this.state.right.text} />
           <TextAlert team={right} show={this.state.right.alertType.defusing} text={this.state.right.text} />
-          <TextAlert team={right} show={this.state.right.alertType.planted} text={this.state.right.text} />
+          {/* <TextAlert team={right} show={this.state.right.alertType.planted} text={this.state.right.text} /> */}
+          <Bombarino team={right} show={this.state.right.alertType.planted} defusing={this.state.left.alertType.defusing} />
           <TextAlert team={right} show={this.state.right.alertType.teamTimeout} text={this.state.right.text} />
         </div>
       </div>

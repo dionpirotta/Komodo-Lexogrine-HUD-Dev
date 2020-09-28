@@ -49,6 +49,8 @@ code {
   --color-ct: #5788a8;
   --color-new-t: #f0c941;
   --color-new-ct: #5ab8f4;
+  --color-timeout-t: rgba(240, 202, 65, 0.40);
+  --color-timeout-ct: rgba(90, 185, 244, 0.40);
   --color-bomb: #f22222;
   --color-defuse: #2222f2;
   --main-t: var(--color-new-t);
