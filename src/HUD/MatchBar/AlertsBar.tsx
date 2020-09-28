@@ -5,6 +5,7 @@ import { GSI } from "./../../App";
 import SeriesScore from "./SeriesScore";
 import TextAlert from "./TextAlert";
 import "./../Styles/alertsbar.css";
+import maps from "../Radar/LexoRadar/maps";
 
 interface Props {
   map: I.Map;
@@ -86,9 +87,11 @@ export default class AlertsBar extends React.Component<Props, State> {
   };
 
   componentDidMount() {
+    // TODO dont show the bomb explosion or plant start or plant if the round is over
+
     GSI.on("roundEnd", (score) => {
       console.log("round end called");
-      this.modAlert("WINS THE ROUND", score.winner.orientation, "roundWon", 5000);
+      this.modAlert("WINS THE ROUND", score.winner.orientation, "roundWon");
     });
 
     GSI.on("bombPlantStart", (player) => {
@@ -116,8 +119,8 @@ export default class AlertsBar extends React.Component<Props, State> {
     GSI.on("bombDefuse", (player) => {
       console.log("defused");
       this.state[player.team.orientation].alertType.defusing = false;
-      // if defused, hide the bomb area and show T series score
-      // this.state[this.props.map.team_t.orientation].seriesScore = true;
+      // TODO remove this line under; if defused, hide the bomb area and show T series score
+      this.state[this.props.map.team_t.orientation].seriesScore = true;
     });
 
     GSI.on("bombExplode", () => {
@@ -132,6 +135,19 @@ export default class AlertsBar extends React.Component<Props, State> {
           console.log("planting was stopped");
           this.state[data.map.team_t.orientation].alertType.planting = false;
           this.state[data.map.team_t.orientation].seriesScore = true;
+        }
+      }
+      if (this.state.left.alertType.roundWon || this.state.right.alertType.roundWon) {
+        if (this.props.phase.phase !== "over") {
+          if (this.state.left.alertType.roundWon) {
+            this.state.left.alertType.roundWon = false;
+            this.state.left.seriesScore = true;
+          }
+
+          if (this.state.right.alertType.roundWon) {
+            this.state.right.alertType.roundWon = false;
+            this.state.right.seriesScore = true;
+          }
         }
       }
     });
