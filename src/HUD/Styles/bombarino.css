@@ -37,21 +37,12 @@
     background-color: var(--main-ct);
 }
 
-.bomb_planted {
-    width: 480px;
-    height: 100%;
-    background-color: purple;
-    display: flex;
-    flex-direction: column;
-}
-
 .bomb_inside {
     width: 400px;
     height: 100%;
     background-color: var(--main-panel-color);
     display: flex;
     flex-direction: column;
-
 }
 
 .bomb_box.show.left .bomb_inside {
@@ -71,12 +62,20 @@
 
 .defuse_holder {
     display: flex;
-    flex-direction: row;
     width: 100px;
     height: 50%;
 }
 
+.bomb_box.show.left .bomb_inside .defuse_holder {
+    flex-direction: row-reverse;
+}
+
+.bomb_box.show.right .bomb_inside .defuse_holder {
+    flex-direction: row;
+}
+
 .defuse_bar {
+    display: flex;
     width: 100%;
     height: 100%;
     background-color: var(--color-defuse);

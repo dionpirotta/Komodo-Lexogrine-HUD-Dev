@@ -1,7 +1,6 @@
 import React from "react";
 import * as I from "csgogsi-socket";
 import "./../Styles/phasetimer.css";
-// import { Timer } from "./MatchBar";
 import { GSI } from "../../App";
 import { Hourglass, BombExplosionT, C4, C4T, Defuse, DefuseCT, Pause, PauseCT, PauseT, SkullT, SkullCT, TimerCT } from "./../../assets/Icons";
 const timeoutTime = 30;
@@ -131,6 +130,9 @@ export default class PhaseTimer extends React.Component<Props, State> {
         if (this.props.phase.phase_ends_in < "10") {
           this.setState({ textColor: "--color-bomb" });
         }
+        if (this.state.bgHeight != 0) {
+          this.setState({ bgHeight: 0 });
+        }
       }
     });
   }
@@ -141,14 +143,9 @@ export default class PhaseTimer extends React.Component<Props, State> {
     const bomb = this.props.bomb;
     const isBombState = bomb?.state === "defusing" || bomb?.state === "planted" || bomb?.state === "defused" || bomb?.state === "exploded";
     var style = getComputedStyle(document.body);
-
-    // console.log(phase);
-    // console.log(bomb);
-    // console.log(this.props.map);
     return (
       <div className={`phase_timer`}>
         <div className={`text_display ${this.state.showImage ? "hide" : ""}`}>
-          {/* <div className={`text_display`}> */}
           <div className={`timer_display`} style={{ color: style.getPropertyValue(this.state.textColor) }}>
             {time}
           </div>

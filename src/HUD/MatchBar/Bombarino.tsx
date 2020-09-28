@@ -81,7 +81,7 @@ export default class Bombarino extends React.Component<Props, State> {
         <div className={`bomb_inside`}>
           <div className={`bomb_bar`} style={{ height: `${this.state.bombBarHeight}%`, width: `${this.state.bombBarWidth}%` }}></div>
           <div className={`defuse_holder`} style={{ height: `${this.state.defuseBarHeight}%` }}>
-            <div className={`defuse_bar `} style={{ width: `${this.state.defuseBarWidth}%` }}></div>
+            <div className={`defuse_bar`} style={{ width: `${this.state.defuseBarWidth}%` }}></div>
           </div>
         </div>
         <div className={`bar ${team.side}`}></div>
