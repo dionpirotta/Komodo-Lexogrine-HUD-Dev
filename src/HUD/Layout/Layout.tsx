@@ -99,7 +99,8 @@ export default class Layout extends React.Component<Props, State> {
 
     return (
       <div className={`layout ${this.state.active ? "active" : "inactive"}`}>
-        <Overview match={match} map={game.map} players={game.players || []} />
+        {/* TODO Create Scoreboard with how each round was won, and then do all players total overviews (ADR, HS etc) */}
+        {/* <Overview match={match} map={game.map} players={game.players || []} /> */}
         <MatchBar map={game.map} phase={game.phase_countdowns} bomb={game.bomb} leftPlayers={leftPlayers} rightPlayers={rightPlayers} />
 
         <AlertsBar map={game.map} phase={game.phase_countdowns} match={match} />

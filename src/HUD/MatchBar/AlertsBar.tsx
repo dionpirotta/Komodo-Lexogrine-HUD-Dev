@@ -22,6 +22,7 @@ interface State {
       planting: boolean;
       defusing: boolean;
       planted: boolean;
+      teamTimeout: boolean;
     };
   };
   right: {
@@ -32,6 +33,7 @@ interface State {
       planting: boolean;
       defusing: boolean;
       planted: boolean;
+      teamTimeout: boolean;
     };
   };
 }
@@ -53,6 +55,7 @@ export default class AlertsBar extends React.Component<Props, State> {
         planting: false,
         defusing: false,
         planted: false,
+        teamTimeout: false,
       },
     },
     right: {
@@ -63,11 +66,12 @@ export default class AlertsBar extends React.Component<Props, State> {
         planting: false,
         defusing: false,
         planted: false,
+        teamTimeout: false,
       },
     },
   };
 
-  modAlert = (text: string, side: "left" | "right", alert: "roundWon" | "planting" | "defusing" | "planted", time?: number) => {
+  modAlert = (text: string, side: "left" | "right", alert: "roundWon" | "planting" | "defusing" | "planted" | "teamTimeout", time?: number) => {
     this.setState(
       (state) => {
         state[side].text = text;
@@ -88,6 +92,14 @@ export default class AlertsBar extends React.Component<Props, State> {
         }
       }
     );
+  };
+
+  modAlertOff = (side: "left" | "right", alert: "roundWon" | "planting" | "defusing" | "planted" | "teamTimeout") => {
+    this.setState((state) => {
+      state[side].alertType[alert] = false;
+      state[side].seriesScore = true;
+      return state;
+    });
   };
 
   componentDidMount() {
@@ -121,16 +133,14 @@ export default class AlertsBar extends React.Component<Props, State> {
 
     GSI.on("defuseStop", (player) => {
       console.log("defuse stopped");
-      this.state[player.team.orientation].alertType.defusing = false;
-      this.state[player.team.orientation].seriesScore = true;
+      this.modAlertOff(player.team.orientation, "defusing");
     });
 
     GSI.on("bombDefuse", (player) => {
       console.log("defused");
       this.state[player.team.orientation].alertType.defusing = false;
       // TODO remove this line under; if defused, hide the bomb area and show T series score
-      this.state[this.props.map.team_t.orientation].alertType.planted = false;
-      this.state[this.props.map.team_t.orientation].seriesScore = true;
+      this.modAlertOff(this.props.map.team_t.orientation, "planted");
     });
 
     GSI.on("bombExplode", () => {
@@ -143,21 +153,28 @@ export default class AlertsBar extends React.Component<Props, State> {
         // Fake Plant, or Killed while Planting, or Planted etc
         if (data.bomb?.state !== "planting") {
           console.log("planting was stopped");
-          this.state[data.map.team_t.orientation].alertType.planting = false;
-          this.state[data.map.team_t.orientation].seriesScore = true;
+          this.modAlertOff(data.map.team_t.orientation, "planting");
         }
       }
       if (this.state.left.alertType.roundWon || this.state.right.alertType.roundWon) {
         if (this.props.phase.phase !== "over") {
           if (this.state.left.alertType.roundWon) {
-            this.state.left.alertType.roundWon = false;
-            this.state.left.seriesScore = true;
+            this.modAlertOff("left", "roundWon");
           }
 
           if (this.state.right.alertType.roundWon) {
-            this.state.right.alertType.roundWon = false;
-            this.state.right.seriesScore = true;
+            this.modAlertOff("right", "roundWon");
           }
+        }
+      }
+      if (data.phase_countdowns.phase === "timeout_ct" || data.phase_countdowns.phase === "timeout_t") {
+        this.modAlert(`TIMEOUTS REMAINING: ${data.map.team_ct.timeouts_remaining}`, data.map.team_ct.orientation, "teamTimeout");
+        this.modAlert(`TIMEOUTS REMAINING: ${data.map.team_t.timeouts_remaining}`, data.map.team_t.orientation, "teamTimeout");
+      }
+      if (this.state.left.alertType.teamTimeout || this.state.right.alertType.teamTimeout) {
+        if (this.props.phase.phase !== "timeout_ct" && this.props.phase.phase !== "timeout_t") {
+          this.modAlertOff("left", "teamTimeout");
+          this.modAlertOff("right", "teamTimeout");
         }
       }
     });
@@ -174,8 +191,9 @@ export default class AlertsBar extends React.Component<Props, State> {
     return (
       <div className="alerts">
         <div className={`side_box left`}>
-          {/* Round alert - wins the round/timeouts/match point */}
-          {/* bomb plant / defuse / is planting / is defusing */}
+          {/* match point */}
+          {/* bomb planted */}
+          <TextAlert team={left} show={this.state.left.alertType.teamTimeout} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.planted} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.defusing} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.planting} text={this.state.left.text} />
@@ -193,6 +211,7 @@ export default class AlertsBar extends React.Component<Props, State> {
           <TextAlert team={right} show={this.state.right.alertType.planting} text={this.state.right.text} />
           <TextAlert team={right} show={this.state.right.alertType.defusing} text={this.state.right.text} />
           <TextAlert team={right} show={this.state.right.alertType.planted} text={this.state.right.text} />
+          <TextAlert team={right} show={this.state.right.alertType.teamTimeout} text={this.state.right.text} />
         </div>
       </div>
     );
