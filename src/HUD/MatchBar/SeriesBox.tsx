@@ -84,9 +84,9 @@ export default class SeriesBox extends React.Component<Props, State> {
     );
   };
   componentDidMount() {
-    GSI.on("roundEnd", (score) => {
-      this.modAlert("WINS THE ROUND", score.winner.orientation, "roundWon", 5000);
-    });
+    // GSI.on("roundEnd", (score) => {
+    //   this.modAlert("WINS THE ROUND", score.winner.orientation, "roundWon", 5000);
+    // });
     GSI.on("bombPlant", (player) => {
       this.modAlert("BOMB PLANTED", player.team.orientation, "bombPlanted");
       this.setState((state) => {

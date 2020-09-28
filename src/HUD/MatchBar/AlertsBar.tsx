@@ -3,7 +3,7 @@ import * as I from "csgogsi-socket";
 import { Match } from "../../api/interfaces";
 import { GSI } from "./../../App";
 import SeriesScore from "./SeriesScore";
-import WinsRound from "./WinsRound";
+import TextAlert from "./TextAlert";
 import "./../Styles/alertsbar.css";
 
 interface Props {
@@ -18,6 +18,8 @@ interface State {
     seriesScore: boolean;
     alertType: {
       roundWon: boolean;
+      planting: boolean;
+      defusing: boolean;
     };
   };
   right: {
@@ -25,6 +27,8 @@ interface State {
     seriesScore: boolean;
     alertType: {
       roundWon: boolean;
+      planting: boolean;
+      defusing: boolean;
     };
   };
 }
@@ -43,6 +47,8 @@ export default class AlertsBar extends React.Component<Props, State> {
       seriesScore: true,
       alertType: {
         roundWon: false,
+        planting: false,
+        defusing: false,
       },
     },
     right: {
@@ -50,11 +56,13 @@ export default class AlertsBar extends React.Component<Props, State> {
       seriesScore: true,
       alertType: {
         roundWon: false,
+        planting: false,
+        defusing: false,
       },
     },
   };
 
-  modAlert = (text: string, side: "left" | "right", alert: "roundWon", time?: number) => {
+  modAlert = (text: string, side: "left" | "right", alert: "roundWon" | "planting" | "defusing", time?: number) => {
     this.setState(
       (state) => {
         state[side].text = text;
@@ -79,7 +87,47 @@ export default class AlertsBar extends React.Component<Props, State> {
 
   componentDidMount() {
     GSI.on("roundEnd", (score) => {
+      console.log("round end called");
       this.modAlert("WINS THE ROUND", score.winner.orientation, "roundWon", 5000);
+    });
+
+    GSI.on("bombPlantStart", (player) => {
+      console.log("bomb plant start called");
+      this.modAlert(`${player.name} is planting`, player.team.orientation, "planting");
+    });
+
+    GSI.on("bombPlant", (player) => {
+      console.log("bomb planted");
+      this.state[player.team.orientation].alertType.planting = false;
+      // TODO show the bombPlant bit
+    });
+
+    GSI.on("defuseStart", (player) => {
+      console.log("defuse started");
+      this.modAlert(`${player.name} is defusing${player.state.defusekit ? " with a kit" : ""}`, player.team.orientation, "defusing");
+    });
+
+    GSI.on("defuseStop", (player) => {
+      console.log("defuse stopped");
+      this.state[player.team.orientation].alertType.defusing = false;
+      this.state[player.team.orientation].seriesScore = true;
+    });
+
+    GSI.on("bombDefuse", (player) => {
+      console.log("defused");
+      this.state[player.team.orientation].alertType.defusing = false;
+      // this.state[this.props.map.team_t.orientation].seriesScore = true;
+    });
+
+    GSI.on("data", (data) => {
+      if (this.state.right.alertType.planting || this.state.left.alertType.planting) {
+        // Fake Plant, or Killed while Planting, or Planted etc
+        if (data.bomb?.state !== "planting") {
+          console.log("planting was stopped");
+          this.state[data.map.team_t.orientation].alertType.planting = false;
+          this.state[data.map.team_t.orientation].seriesScore = true;
+        }
+      }
     });
   }
 
@@ -96,7 +144,9 @@ export default class AlertsBar extends React.Component<Props, State> {
         <div className={`side_box left`}>
           {/* Round alert - wins the round/timeouts/match point */}
           {/* bomb plant / defuse / is planting / is defusing */}
-          <WinsRound team={left} show={this.state.left.alertType.roundWon} />
+          <TextAlert team={left} show={this.state.left.alertType.defusing} text={this.state.left.text} />
+          <TextAlert team={left} show={this.state.left.alertType.planting} text={this.state.left.text} />
+          <TextAlert team={left} show={this.state.left.alertType.roundWon} text={this.state.left.text} />
           <SeriesScore team={left} show={this.state.left.seriesScore} wonmaps={amountOfMaps} wins={left_wins} />
         </div>
         <div className={`series`}>
@@ -106,7 +156,9 @@ export default class AlertsBar extends React.Component<Props, State> {
         </div>
         <div className={`side_box right`}>
           <SeriesScore team={right} show={this.state.right.seriesScore} wonmaps={amountOfMaps} wins={right_wins} />
-          <WinsRound team={right} show={this.state.right.alertType.roundWon} />
+          <TextAlert team={right} show={this.state.right.alertType.roundWon} text={this.state.right.text} />
+          <TextAlert team={right} show={this.state.right.alertType.planting} text={this.state.right.text} />
+          <TextAlert team={right} show={this.state.right.alertType.defusing} text={this.state.right.text} />
         </div>
       </div>
     );

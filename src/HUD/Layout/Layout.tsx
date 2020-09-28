@@ -44,13 +44,13 @@ export default class Layout extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    GSI.on("roundEnd", (score) => {
-      this.setState({ winner: score.winner, showWin: true }, () => {
-        setTimeout(() => {
-          this.setState({ showWin: false });
-        }, 4000);
-      });
-    });
+    // GSI.on("roundEnd", (score) => {
+    //   this.setState({ winner: score.winner, showWin: true }, () => {
+    //     setTimeout(() => {
+    //       this.setState({ showWin: false });
+    //     }, 4000);
+    //   });
+    // });
     actions.on("boxesState", (state: string) => {
       if (state === "show") {
         this.setState({ forceHide: false });
@@ -100,19 +100,20 @@ export default class Layout extends React.Component<Props, State> {
         <Trivia />
         <Watermark />
 
-        <div className={`minimal ${this.state.minimal ? "minimal" : "full"}`}>
-          <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>
-            <div className={`bar ${left.side}`}></div>
-            <div className={`players_alive`}>
-              <div className="title_container">Players Alive</div>
-              <div className="counter_container">
-                <div className={`team_counter ${left.side}`}>{leftPlayers.filter((player) => player.state.health > 0).length}</div>
-                <div className={`vs_counter`}>VS</div>
-                <div className={`team_counter ${right.side}`}>{rightPlayers.filter((player) => player.state.health > 0).length}</div>
-              </div>
+        <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>
+          <div className={`bar ${left.side}`}></div>
+          <div className={`players_alive`}>
+            <div className="title_container">Players Alive</div>
+            <div className="counter_container">
+              <div className={`team_counter ${left.side}`}>{leftPlayers.filter((player) => player.state.health > 0).length}</div>
+              <div className={`vs_counter`}>VS</div>
+              <div className={`team_counter ${right.side}`}>{rightPlayers.filter((player) => player.state.health > 0).length}</div>
             </div>
-            <div className={`bar ${right.side}`}></div>
           </div>
+          <div className={`bar ${right.side}`}></div>
+        </div>
+
+        <div className={`minimal ${this.state.minimal ? "minimal" : "full"}`}>
           <Killfeed />
           <RadarMaps match={match} map={game.map} game={game} />
           <MapSeries teams={[left, right]} match={match} isFreezetime={isFreezetime} map={game.map} />

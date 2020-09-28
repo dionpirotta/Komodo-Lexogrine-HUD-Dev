@@ -1,4 +1,4 @@
-.wins_round {
+.text_area {
     position: fixed;
     display: flex;
     width: 500px;
@@ -8,28 +8,28 @@
     transition: top 0.5s;
 }
 
-.wins_round.show {
+.text_area.show {
     top: 0px;
 }
 
-.wins_round.hide {
+.text_area.hide {
     top: -40px;
 }
 
-.wins_round .bar {
+.text_area .bar {
     width: 10px;
     height: 100%;
 }
 
-.wins_round .bar.T {
+.text_area .bar.T {
     background-color: var(--main-t);
 }
 
-.wins_round .bar.CT {
+.text_area .bar.CT {
     background-color: var(--main-ct);
 }
 
-.text_container {
+.text_holder {
     width: 480px;
     height: 100%;
     background-color: var(--main-panel-color);
@@ -40,10 +40,10 @@
     font-weight: 600;
 }
 
-.text_container.T {
+.text_holder.T {
     color: var(--main-t);
 }
 
-.text_container.CT {
+.text_holder.CT {
     color: var(--main-ct);
 }
