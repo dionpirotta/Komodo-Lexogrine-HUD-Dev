@@ -118,6 +118,9 @@ This will create a zip file for you to drag into the HUD Manager
 
 - Left Alt + F
   > Refresh HUD
+  
+- Left Alt + Y
+  > Toggle Avatars On/OFF
 
 - Left Alt + O
   > Toggle HUD On/OFF
