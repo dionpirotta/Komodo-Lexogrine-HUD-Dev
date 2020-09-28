@@ -6,7 +6,8 @@ export default class Watermark extends React.Component<any> {
     return (
       <div className={`watermark_container`}>
         <div className="title">Created by Komodo</div>
-        <div className="hex">15a07bdc90f582e2cec89b8970d2df94</div>
+        {/* <div className="hex">15a07bdc90f582e2cec89b8970d2df94</div> */}
+        <div className="hex">This HUD is ONLY for: Komodo</div>
       </div>
     );
   }

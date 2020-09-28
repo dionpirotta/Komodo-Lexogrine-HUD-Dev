@@ -116,7 +116,13 @@ export default class AlertsBar extends React.Component<Props, State> {
     GSI.on("bombDefuse", (player) => {
       console.log("defused");
       this.state[player.team.orientation].alertType.defusing = false;
+      // if defused, hide the bomb area and show T series score
       // this.state[this.props.map.team_t.orientation].seriesScore = true;
+    });
+
+    GSI.on("bombExplode", () => {
+      console.log("bomb exploded");
+      // check if need to also hide defusing stuff like in defuseStop (ie if dies to bomb explosion whilst defusing, will defuseStop be called as well as bombExplode)
     });
 
     GSI.on("data", (data) => {

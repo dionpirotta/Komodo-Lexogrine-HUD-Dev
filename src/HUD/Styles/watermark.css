@@ -20,14 +20,15 @@
     height: 30px;
     line-height: 30px;
     font-weight: bold;
-    padding-top: 4px;
+    padding-top: 6px;
     overflow: hidden;
     text-align: center;
 }
 
 .watermark_container .hex {
+    margin-top: 4px;
     height: 20px;
-    line-height: 30px;
+    line-height: 16px;
     padding-top: 4px;
     overflow: hidden;
     text-align: center;

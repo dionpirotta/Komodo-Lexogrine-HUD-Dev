@@ -17,6 +17,7 @@ import Overview from "../Overview/Overview";
 import Tournament from "../Tournament/Tournament";
 import Watermark from "../Watermark/Watermark";
 import AlertsBar from "../MatchBar/AlertsBar";
+import BetaTesting from "../Watermark/BetaTesting";
 
 interface Props {
   game: CSGO;
@@ -29,6 +30,7 @@ interface State {
   forceHide: boolean;
   active: boolean;
   minimal: boolean;
+  util: boolean;
 }
 
 export default class Layout extends React.Component<Props, State> {
@@ -40,6 +42,7 @@ export default class Layout extends React.Component<Props, State> {
       forceHide: false,
       active: true,
       minimal: false,
+      util: false,
     };
   }
 
@@ -51,6 +54,13 @@ export default class Layout extends React.Component<Props, State> {
     //     }, 4000);
     //   });
     // });
+    GSI.on("bombPlant", () => {
+      this.setState({ util: true }, () => {
+        setTimeout(() => {
+          this.setState({ util: false });
+        }, 5000);
+      });
+    });
     actions.on("boxesState", (state: string) => {
       if (state === "show") {
         this.setState({ forceHide: false });
@@ -99,6 +109,7 @@ export default class Layout extends React.Component<Props, State> {
         <Tournament />
         <Trivia />
         <Watermark />
+        <BetaTesting />
 
         <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>
           <div className={`bar ${left.side}`}></div>
@@ -122,7 +133,7 @@ export default class Layout extends React.Component<Props, State> {
 
           <div className={"boxes left"}>
             <SideBox side="left" hide={forceHide} />
-            <UtilityLevel team={left.side} side="left" players={game.players} show={isFreezetime && !forceHide} />
+            <UtilityLevel team={left.side} side="left" players={game.players} show={(isFreezetime && !forceHide) || (this.state.util && !forceHide)} />
             <MoneyBox
               team={left.side}
               side="left"
@@ -134,7 +145,7 @@ export default class Layout extends React.Component<Props, State> {
           </div>
           <div className={"boxes right"}>
             <SideBox side="right" hide={forceHide} />
-            <UtilityLevel team={right.side} side="right" players={game.players} show={isFreezetime && !forceHide} />
+            <UtilityLevel team={right.side} side="right" players={game.players} show={(isFreezetime && !forceHide) || (this.state.util && !forceHide)} />
             <MoneyBox
               team={right.side}
               side="right"
