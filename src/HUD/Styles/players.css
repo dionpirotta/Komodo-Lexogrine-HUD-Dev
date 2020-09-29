@@ -654,9 +654,19 @@ img.weapon.active {
     flex-direction: row-reverse;
 }
 
-.flashed img,
-.burning img {
+.flashed.show img,
+.burning.show img {
     max-height: 42px;
+}
+
+.status_effects.left .flashed.show,
+.status_effects.left .burning.show {
+    margin-left: 10px;
+}
+
+.status_effects.right .flashed.show,
+.status_effects.right .burning.show {
+    margin-right: 10px;
 }
 
 .flashed.hide,
