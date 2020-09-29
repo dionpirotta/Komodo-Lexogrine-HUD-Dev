@@ -16,6 +16,8 @@ interface State {
   defuseBarHeight: number;
   defuseBarWidth: number;
   bombTime: number;
+  textColor: string;
+  textThickness: number;
 }
 
 export default class Bombarino extends React.Component<Props, State> {
@@ -27,6 +29,8 @@ export default class Bombarino extends React.Component<Props, State> {
       defuseBarHeight: 50,
       defuseBarWidth: 100,
       bombTime: 40.0,
+      textColor: "--white-full",
+      textThickness: 500,
     };
   }
 
@@ -39,13 +43,16 @@ export default class Bombarino extends React.Component<Props, State> {
   };
 
   resetBomb = () => {
-    this.setState({ bombBarHeight: 100, defuseBarHeight: 0, bombBarWidth: 0, defuseBarWidth: 100 });
+    this.setState({ bombBarHeight: 100, defuseBarHeight: 0, bombBarWidth: 0, defuseBarWidth: 100, textColor: "--white-full", textThickness: 500 });
   };
 
   componentDidMount() {
     const bomb = new BombTimer((time) => {
       let width = time > 40 ? 4000 : time * 100;
       this.setState({ bombBarWidth: width / 40, bombTime: Math.round(time * 1e1) / 1e1 });
+      if (time <= 5) {
+        this.setState({ textColor: "--color-bomb", textThickness: 600 });
+      }
     });
 
     bomb.onReset(this.resetBomb);
@@ -74,6 +81,7 @@ export default class Bombarino extends React.Component<Props, State> {
 
   render() {
     const { team, show } = this.props;
+    var style = getComputedStyle(document.body);
     if (!team) return null;
     return (
       <div className={`bomb_box ${show ? "show" : "hide"} ${team.orientation}`}>
@@ -86,7 +94,9 @@ export default class Bombarino extends React.Component<Props, State> {
         </div>
         <div className={`bar ${team.side}`}></div>
         <div className={`bomb_time`}>
-          <div className={`bomb_text`}>{this.state.bombTime}</div>
+          <div className={`bomb_text`} style={{ color: style.getPropertyValue(this.state.textColor), fontWeight: this.state.textThickness }}>
+            {this.state.bombTime}
+          </div>
         </div>
         <div className={`bar ${team.side}`}></div>
       </div>

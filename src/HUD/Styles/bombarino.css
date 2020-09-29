@@ -92,7 +92,6 @@
     overflow: hidden;
     text-align: center;
     text-overflow: ellipsis;
-    color: var(--white-full);
 }
 
 .bomb_text {

@@ -1,53 +1,53 @@
 .watermark_container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--sub-panel-color);
-    color: var(--white-full);
-    width: 300px;
-    height: 70px;
-    top: 130px;
-    opacity: 1;
-    transition: opacity .5s;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--sub-panel-color);
+  color: var(--white-full);
+  width: 300px;
+  height: 70px;
+  top: 130px;
+  opacity: 1;
+  transition: opacity 0.5s;
 
-    /* animation-delay: 2s;
-    animation: ShowAndHide 5s ease-out 1;
-    animation-fill-mode: forwards; */
+  animation-delay: 2s;
+  animation: ShowAndHide 5s ease-out 1;
+  animation-fill-mode: forwards;
 }
 
 .watermark_container .title {
-    font-size: 16pt;
-    height: 30px;
-    line-height: 30px;
-    font-weight: bold;
-    padding-top: 6px;
-    overflow: hidden;
-    text-align: center;
+  font-size: 16pt;
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  padding-top: 6px;
+  overflow: hidden;
+  text-align: center;
 }
 
 .watermark_container .hex {
-    margin-top: 4px;
-    height: 20px;
-    line-height: 16px;
-    padding-top: 4px;
-    overflow: hidden;
-    text-align: center;
+  margin-top: 4px;
+  height: 20px;
+  line-height: 16px;
+  padding-top: 4px;
+  overflow: hidden;
+  text-align: center;
 }
 
 @keyframes ShowAndHide {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    5% {
-        opacity: 1;
-    }
+  5% {
+    opacity: 1;
+  }
 
-    95% {
-        opacity: 1;
-    }
+  95% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
