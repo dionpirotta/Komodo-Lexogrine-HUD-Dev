@@ -5,7 +5,7 @@ import Avatar from "./Avatar";
 import Armor from "./../Indicators/Armor";
 import Bomb from "./../Indicators/Bomb";
 import Defuse from "./../Indicators/Defuse";
-import { Skull, SkullCT, SkullT } from "./../../assets/Icons";
+import { Skull, SkullCT, SkullT, Burning, Blind } from "./../../assets/Icons";
 import { GSI } from "../../App";
 
 interface IProps {
@@ -95,21 +95,31 @@ export default class PlayerBox extends React.Component<IProps, IState> {
           </div>
         </div>
         <div className={`observing ${this.props.isObserved ? "active" : ""}`} />
-        <div className={`freeze-time ${isLeft ? "left" : "right"} ${this.props.isFreezetime ? "" : "hide"}`}>
-          <div className="stats">
-            <div className="labels">
-              <div className="stat-label">K</div>
-              <div className="stat-label">A</div>
-              <div className="stat-label">D</div>
+        <div className={`stats_holder ${isLeft ? "left" : "right"}`}>
+          <div className={`freeze_stats ${isLeft ? "left" : "right"} ${this.props.isFreezetime ? "show" : "hide"}`}>
+            <div className="stats">
+              <div className="labels">
+                <div className="stat-label">K</div>
+                <div className="stat-label">A</div>
+                <div className="stat-label">D</div>
+              </div>
+              <div className="values">
+                <div className="stat-value">{player.stats.kills}</div>
+                <div className="stat-value">{player.stats.assists}</div>
+                <div className="stat-value">{player.stats.deaths}</div>
+              </div>
             </div>
-            <div className="values">
-              <div className="stat-value">{player.stats.kills}</div>
-              <div className="stat-value">{player.stats.assists}</div>
-              <div className="stat-value">{player.stats.deaths}</div>
+            <div className={`spending`}>
+              <div className={`spent`}>-${Math.abs(player.state.money - this.state.startRoundMoney)}</div>
             </div>
           </div>
-          <div className={`spending`}>
-            <div className={`spent`}>-${Math.abs(player.state.money - this.state.startRoundMoney)}</div>
+          <div className={`status_effects ${isLeft ? "left" : "right"} ${this.props.isFreezetime ? "hide" : "show"} ${isDead ? "dead" : "alive"}`}>
+            <div className={`flashed ${player.state.flashed > 0 ? "show" : "hide"}`}>
+              <img src={Blind} style={{ opacity: (100 / 255) * player.state.flashed }} />
+            </div>
+            <div className={`burning ${player.state.burning > 0 ? "show" : "hide"}`}>
+              <img src={Burning} style={{ opacity: (100 / 255) * player.state.burning }} />
+            </div>
           </div>
         </div>
       </div>

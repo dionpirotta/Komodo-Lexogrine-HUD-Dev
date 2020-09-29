@@ -221,6 +221,7 @@
     justify-content: flex-start;
     color: var(--white-half);
     overflow: hidden;
+    display: none;
 }
 
 .teambox.right .player.dead .row .health {
@@ -229,6 +230,7 @@
     justify-content: flex-end;
     color: var(--white-half);
     overflow: hidden;
+    display: none;
 }
 
 .teambox .player .row .username {
@@ -448,83 +450,6 @@ img.weapon.active {
     max-height: 24px;
 }
 
-.freeze-time {
-    width: 140px;
-    height: 100%;
-    display: flex;
-    opacity: 1;
-    transition: opacity 0.5s;
-    background-color: var(--sub-panel-color);
-}
-
-.freeze-time.hide {
-    opacity: 0;
-}
-
-.freeze-time.left {
-    align-items: flex-start;
-    flex-direction: row;
-}
-
-.freeze-time.right {
-    align-items: flex-end;
-    flex-direction: row-reverse;
-}
-
-.freeze-time .stats {
-    width: 60px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-    color: var(--white-full);
-}
-
-.freeze-time .stats .labels,
-.freeze-time .stats .values {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-}
-
-.freeze-time .stats .labels .stat-label,
-.freeze-time .stats .values .stat-value {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.freeze-time .spending {
-    width: 80px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.freeze-time.left .spending {
-    justify-content: flex-end;
-}
-
-.freeze-time.right .spending {
-    justify-content: flex-start;
-}
-
-.freeze-time .spending .spent {
-    color: var(--color-spent);
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.freeze-time.left .spending .spent {
-    padding-right: 4px;
-}
-
-.freeze-time.right .spending .spent {
-    padding-left: 4px;
-}
-
 .alive_box {
     display: flex;
     flex-direction: row;
@@ -605,4 +530,136 @@ img.weapon.active {
 
 .alive_box .bar.T {
     background-color: var(--main-t);
+}
+
+.stats_holder {
+    width: 140px;
+    height: 70px;
+    position: fixed;
+    display: flex;
+}
+
+.stats_holder.left {
+    left: 400px;
+}
+
+.stats_holder.right {
+    right: 400px;
+}
+
+.freeze_stats {
+    /* position: fixed; */
+    width: 140px;
+    height: 100%;
+    display: flex;
+    background-color: var(--sub-panel-color);
+}
+
+.freeze_stats.show {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.freeze_stats.hide {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.freeze_stats.left {
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.freeze_stats.right {
+    align-items: flex-end;
+    flex-direction: row-reverse;
+}
+
+.freeze_stats .stats {
+    width: 70px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: var(--white-full);
+}
+
+.freeze_stats .stats .labels,
+.freeze_stats .stats .values {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.freeze_stats .stats .labels .stat-label,
+.freeze_stats .stats .values .stat-value {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.freeze_stats .spending {
+    width: 70px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.freeze_stats.left .spending {
+    justify-content: flex-end;
+}
+
+.freeze_stats.right .spending {
+    justify-content: flex-start;
+}
+
+.freeze_stats .spending .spent {
+    color: var(--color-spent);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.freeze_stats.left .spending .spent {
+    padding-right: 2px;
+}
+
+.freeze_stats.right .spending .spent {
+    padding-left: 2px;
+}
+
+.status_effects.show {
+    position: fixed;
+    width: 140px;
+    height: 70px;
+    display: flex;
+}
+
+.status_effects.hide {
+    display: none;
+}
+
+.status_effects.show.dead {
+    display: none;
+}
+
+.status_effects.left {
+    align-items: center;
+    flex-direction: row;
+}
+
+.status_effects.right {
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.flashed img,
+.burning img {
+    max-height: 42px;
+}
+
+.flashed.hide,
+.burning.hide {
+    display: none;
 }
