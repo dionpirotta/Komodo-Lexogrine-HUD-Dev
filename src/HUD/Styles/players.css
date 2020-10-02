@@ -378,12 +378,24 @@
     transition: width 0.5s 1.25s;
 }
 
-.teambox.CT .player .row .hp_background {
-    background-color: var(--main-ct);
+.teambox.CT .player .row .hp_background.left {
+    /* background-color: var(--main-ct); */
+    background: linear-gradient(270deg, var(--color-new-ct) 0%, var(--color-ct) 60%);
 }
 
-.teambox.T .player .row .hp_background {
-    background-color: var(--main-t);
+.teambox.CT .player .row .hp_background.right {
+    /* background-color: var(--main-ct); */
+    background: linear-gradient(90deg, var(--color-new-ct) 0%, var(--color-ct) 60%);
+}
+
+.teambox.T .player .row .hp_background.right {
+    /* background-color: var(--main-t); */
+    background: linear-gradient(90deg, var(--color-new-t) 0%, var(--color-t) 60%);
+}
+
+.teambox.T .player .row .hp_background.left {
+    /* background-color: var(--main-t); */
+    background: linear-gradient(270deg, var(--color-new-t) 0%, var(--color-t) 60%);
 }
 
 .player .username img.weapon {
@@ -470,7 +482,6 @@ img.weapon.active {
     display: flex;
     flex-direction: column;
     width: 210px;
-    /* background-color: var(--sub-panel-color); */
 }
 
 .players_alive .counter_container {

@@ -78,7 +78,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: var(--color-defuse);
+    background-color: var(--color-new-ct);
 }
 
 .bomb_time {

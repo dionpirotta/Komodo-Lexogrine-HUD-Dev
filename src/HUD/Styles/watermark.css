@@ -9,10 +9,10 @@
   top: 130px;
   opacity: 1;
   transition: opacity 0.5s;
-  /* 
+
   animation-delay: 2s;
   animation: ShowAndHide 5s ease-out 1;
-  animation-fill-mode: forwards; */
+  animation-fill-mode: forwards;
 }
 
 .watermark_container .title {

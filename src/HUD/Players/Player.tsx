@@ -69,7 +69,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
                 {!primary && !secondary && knife ? <Weapon weapon={knife ? knife.name : ""} active={knife ? knife.state === "active" : false} /> : ""}
               </div>
               <div className="hp_background_2" style={{ width: `${player.state.health}%` }}></div>
-              <div className="hp_background" style={{ width: `${player.state.health}%` }}></div>
+              <div className={`hp_background ${player.team.orientation}`} style={{ width: `${player.state.health}%` }}></div>
             </div>
             <div className={`row ${this.props.isObserved ? "obs" : ""}`}>
               <div className="armor_and_utility">

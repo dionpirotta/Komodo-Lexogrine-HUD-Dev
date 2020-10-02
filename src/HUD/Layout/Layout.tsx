@@ -110,7 +110,7 @@ export default class Layout extends React.Component<Props, State> {
         <Tournament />
         <Trivia />
         <Watermark />
-        <BetaTesting />
+        {/* <BetaTesting /> */}
 
         <div className={`alive_box ${isFreezetime ? "hide" : ""}`}>
           <div className={`bar ${left.side}`}></div>
