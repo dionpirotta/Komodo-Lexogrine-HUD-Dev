@@ -559,7 +559,6 @@ img.weapon.active {
 }
 
 .freeze_stats {
-    /* position: fixed; */
     width: 140px;
     height: 100%;
     display: flex;

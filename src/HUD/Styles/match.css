@@ -16,7 +16,6 @@
 
 .map_series_container .veto_container {
     display: flex;
-    /* background-color: var(--sub-panel-color); */
     color: var(--white-full);
     align-items: center;
     height: 60px;
@@ -83,10 +82,6 @@
     align-items: center;
     justify-content: center;
 }
-
-/* .map_series_container .title_bar .picked {
-    margin-left: auto;
-} */
 
 .map_series_container .veto_container .active_container .active {
     background: var(--white-full);

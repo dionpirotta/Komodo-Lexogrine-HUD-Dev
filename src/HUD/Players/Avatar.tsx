@@ -1,6 +1,6 @@
 import React from "react";
-import { actions } from "./../../App";
 import { avatars } from "./../../api/avatars";
+import { configs } from "./../../App";
 
 interface Props {
   steamid: string;
@@ -9,20 +9,23 @@ interface Props {
 }
 
 interface State {
-  show: boolean;
+  hide: boolean;
 }
 
 export default class Avatar extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      show: true,
+      hide: false,
     };
   }
 
   componentDidMount() {
-    actions.on("toggleAvatar", () => {
-      this.setState((state) => ({ show: !state.show }));
+    configs.onChange((data: any) => {
+      if (!data) return;
+      const display = data.display_settings;
+      if (!display) return;
+      this.setState({ hide: display[`hide_players_avatar`] });
     });
   }
 
@@ -32,7 +35,7 @@ export default class Avatar extends React.Component<Props, State> {
       return "";
     }
     return (
-      <div className={`avatar ${!this.state.show ? "hide" : ""}`}>
+      <div className={`avatar ${this.state.hide ? "hide" : ""}`}>
         <img src={url.custom || url.steam} alt={"Avatar"} />
       </div>
     );

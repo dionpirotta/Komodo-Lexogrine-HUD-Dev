@@ -19,8 +19,7 @@
 }
 
 .utilitybox.hide,
-.moneybox.hide,
-.sidebox.hide {
+.moneybox.hide {
     height: 0;
     opacity: 0;
     margin-bottom: 0px;

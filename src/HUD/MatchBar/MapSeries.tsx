@@ -25,7 +25,7 @@ class VetoEntry extends React.Component<IVetoProps> {
     return (
       <div className={`veto_container ${active ? "active" : ""}`}>
         <div className="veto_map_name">
-          <img src={maps[veto.mapName]} />
+          <img src={maps[veto.mapName]} alt="" />
         </div>
         <div className="veto_picker">
           <TeamLogo team={teams.filter((team) => team.id === veto.teamId)[0]} />

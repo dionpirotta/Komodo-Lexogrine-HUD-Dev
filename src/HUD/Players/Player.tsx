@@ -1,5 +1,5 @@
 import React from "react";
-import { Player, WeaponRaw, Map } from "csgogsi-socket";
+import { Player, WeaponRaw } from "csgogsi-socket";
 import Weapon from "./../Weapon/Weapon";
 import Avatar from "./Avatar";
 import Armor from "./../Indicators/Armor";
@@ -16,7 +16,6 @@ interface IProps {
 
 interface IState {
   startRoundMoney: number;
-  avatar: boolean;
 }
 
 export default class PlayerBox extends React.Component<IProps, IState> {
@@ -24,7 +23,6 @@ export default class PlayerBox extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       startRoundMoney: 800,
-      avatar: true,
     };
   }
 
@@ -80,7 +78,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
               <div className="money">${player.state.money}</div>
               <div className="round_kills">
                 <div className="round_kills_skull">
-                  <img src={player.state.round_kills > 0 ? (isDead ? Skull : player.team.side === "CT" ? SkullCT : SkullT) : ""} />
+                  <img src={player.state.round_kills > 0 ? (isDead ? Skull : player.team.side === "CT" ? SkullCT : SkullT) : ""} alt="" />
                 </div>
                 <div className="round_kills_count">{player.state.round_kills > 0 ? player.state.round_kills : ""}</div>
               </div>
@@ -115,10 +113,10 @@ export default class PlayerBox extends React.Component<IProps, IState> {
           </div>
           <div className={`status_effects ${isLeft ? "left" : "right"} ${this.props.isFreezetime ? "hide" : "show"} ${isDead ? "dead" : "alive"}`}>
             <div className={`flashed ${player.state.flashed > 0 ? "show" : "hide"}`}>
-              <img src={Blind} style={{ opacity: (100 / 255) * player.state.flashed }} />
+              <img src={Blind} style={{ opacity: (100 / 255) * player.state.flashed }} alt="" />
             </div>
             <div className={`burning ${player.state.burning > 0 ? "show" : "hide"}`}>
-              <img src={Burning} style={{ opacity: (100 / 255) * player.state.burning }} />
+              <img src={Burning} style={{ opacity: (100 / 255) * player.state.burning }} alt="" />
             </div>
           </div>
         </div>

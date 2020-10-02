@@ -59,10 +59,9 @@ export default class Armor extends React.Component<{ player: Player; isDefault: 
     const { player } = this.props;
     const side = this.props.isDefault ? "Default" : player.team.side;
     const armor_state = player.state.armor > 30 ? "full" : "half";
-    // if (!player.state.health || !player.state.armor) return "";
     return (
       <div className={`armor_indicator`}>
-        <img src={player.state.armor > 0 ? armor[player.state.helmet ? "helmet" : "kevlar"][side][armor_state] : armor["none"][side]} />
+        <img src={player.state.armor > 0 ? armor[player.state.helmet ? "helmet" : "kevlar"][side][armor_state] : armor["none"][side]} alt="" />
       </div>
     );
   }

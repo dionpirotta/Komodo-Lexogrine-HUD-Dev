@@ -47,10 +47,10 @@ export default class PhaseTimer extends React.Component<Props, State> {
   }
 
   setWhichImageState(show: boolean, to: string) {
-    if (this.state.whichImage != to) {
+    if (this.state.whichImage !== to) {
       this.setState({ whichImage: to });
     }
-    if (this.state.showImage != show) {
+    if (this.state.showImage !== show) {
       this.setState({ showImage: show });
     }
   }
@@ -130,7 +130,7 @@ export default class PhaseTimer extends React.Component<Props, State> {
         if (this.props.phase.phase_ends_in < "10") {
           this.setState({ textColor: "--color-bomb" });
         }
-        if (this.state.bgHeight != 0) {
+        if (this.state.bgHeight !== 0) {
           this.setState({ bgHeight: 0 });
         }
       }
@@ -139,9 +139,6 @@ export default class PhaseTimer extends React.Component<Props, State> {
 
   render() {
     const time = stringToClock(this.props.phase.phase_ends_in);
-    const phase = this.props.phase.phase;
-    const bomb = this.props.bomb;
-    const isBombState = bomb?.state === "defusing" || bomb?.state === "planted" || bomb?.state === "defused" || bomb?.state === "exploded";
     var style = getComputedStyle(document.body);
     return (
       <div className={`phase_timer`}>
@@ -153,7 +150,7 @@ export default class PhaseTimer extends React.Component<Props, State> {
         </div>
         <div className={`image_display ${this.state.showImage ? "" : "hide"}`}>
           <div className={`bg`} style={{ backgroundColor: style.getPropertyValue(this.state.bgColor), height: this.state.bgHeight + "%" }}></div>
-          <img src={this.state.whichImage} />
+          <img src={this.state.whichImage} alt="" />
         </div>
       </div>
     );

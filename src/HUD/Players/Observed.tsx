@@ -10,9 +10,9 @@ import Armor from "./../Indicators/Armor";
 import Bomb from "./../Indicators/Bomb";
 import Defuse from "./../Indicators/Defuse";
 import { Veto } from "../../api/interfaces";
-import { actions } from "./../../App";
+import { configs } from "./../../App";
 
-import { HealthCT, HealthT, HealthFullCT, HealthFullT, BulletsCT, BulletsT, SkullCT, SkullT, DefuseCT, BombT, Bomb as BombD } from "./../../assets/Icons";
+import { HealthCT, HealthT, HealthFullCT, HealthFullT, BulletsCT, BulletsT, SkullCT, SkullT } from "./../../assets/Icons";
 
 class Statistic extends React.PureComponent<{ label: string; value: string | number }> {
   render() {
@@ -32,19 +32,22 @@ interface Props {
 }
 
 interface State {
-  show: boolean;
+  hide: boolean;
 }
 
 export default class Observed extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      show: true,
+      hide: false,
     };
   }
   componentDidMount() {
-    actions.on("toggleAvatar", () => {
-      this.setState((state) => ({ show: !state.show }));
+    configs.onChange((data: any) => {
+      if (!data) return;
+      const display = data.display_settings;
+      if (!display) return;
+      this.setState({ hide: display[`hide_observed_avatar`] });
     });
   }
   getAdr = () => {
@@ -65,16 +68,16 @@ export default class Observed extends React.Component<Props, State> {
     const currentWeapon = weapons.filter((weapon) => weapon.state === "active")[0];
     const grenades = weapons.filter((weapon) => weapon.type === "Grenade");
     const { stats } = player;
-    const ratio = stats.deaths === 0 ? stats.kills : stats.kills / stats.deaths;
+    // const ratio = stats.deaths === 0 ? stats.kills : stats.kills / stats.deaths;
     const countryName = country ? getCountry(country) : null;
 
-    const adr = this.getAdr() !== null ? this.getAdr() : "-";
+    // const adr = this.getAdr() !== null ? this.getAdr() : "-";
 
     return (
       <div className={`observed ${player.team.side}`}>
         <div className="main_row">
           <div className="empty_obs_bar"></div>
-          <div className={`under_avatar ${!this.state.show ? "hide" : ""}`}>
+          <div className={`under_avatar ${this.state.hide ? "hide" : ""}`}>
             <Avatar steamid={player.steamid} />
           </div>
           <TeamLogo team={player.team} />
@@ -93,6 +96,7 @@ export default class Observed extends React.Component<Props, State> {
             <div className="health_icon icon">
               <img
                 src={(player.team.side === "CT" && (player.state.health > 20 ? HealthFullCT : HealthCT)) || (player.team.side === "T" && (player.state.health > 20 ? HealthFullT : HealthT)) || ""}
+                alt=""
               />
             </div>
             <div className="health text" style={player.state.health > 20 ? { color: "var(--white-full)" } : { color: "var(--color-bomb)" }}>
@@ -115,7 +119,7 @@ export default class Observed extends React.Component<Props, State> {
           </div>
           <div className="round_kills">
             <div className="skull_icon">
-              <img src={player.state.round_kills > 0 ? (player.team.side === "CT" ? SkullCT : SkullT) : ""} />
+              <img src={player.state.round_kills > 0 ? (player.team.side === "CT" ? SkullCT : SkullT) : ""} alt="" />
             </div>
             <div className="round_kills_text">{player.state.round_kills > 0 ? player.state.round_kills : ""}</div>
           </div>
@@ -139,7 +143,7 @@ export default class Observed extends React.Component<Props, State> {
             ) : (
               <div className="ammo_cont">
                 <div className="ammo_icon_container">
-                  <img src={player.team.side === "CT" ? BulletsCT : BulletsT} />
+                  <img src={player.team.side === "CT" ? BulletsCT : BulletsT} alt="" />
                 </div>
                 <div className="ammo_counter">
                   <div className="ammo_clip" style={currentWeapon && currentWeapon.ammo_clip && currentWeapon.ammo_clip <= 3 ? { color: "var(--color-bomb)" } : { color: "var(--white-full)" }}>
@@ -149,15 +153,6 @@ export default class Observed extends React.Component<Props, State> {
                 </div>
               </div>
             )}
-            {/* <div className="ammo_icon_container">
-				<img src={player.team.side === "CT" ? BulletsCT : BulletsT} />
-			  </div>
-			  <div className="ammo_counter">
-				<div className="ammo_clip" style={currentWeapon && currentWeapon.ammo_clip && currentWeapon.ammo_clip <= 3 ? { color: "var(--color-bomb)" } : { color: "var(--white-full)" }}>
-				  {(currentWeapon && currentWeapon.ammo_clip) || "-"}
-				</div>
-				<div className="ammo_reserve">/{(currentWeapon && currentWeapon.ammo_reserve) || "-"}</div>
-			  </div> */}
           </div>
           <div className={`obs_bar ${player.team.side}`}></div>
         </div>

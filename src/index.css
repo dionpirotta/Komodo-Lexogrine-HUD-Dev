@@ -55,7 +55,7 @@ code {
   --main-t: var(--color-new-t);
   --main-ct: var(--color-new-ct);
   /* 
-    Dont forget to switch the sidebox grenades in sideboxes.css if you switch the --main colors:
+    Dont forget to switch the sidebox grenades in sideboxes.css if you switch the --main colors, and also Observed's Knife:
     .grenade_image.CT
     .grenade_image.T
   */

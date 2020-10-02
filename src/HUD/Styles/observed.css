@@ -76,11 +76,11 @@
 
 /* .observed .stats_row .grenade_container.CT .active.weapon.grenade {
     filter: invert(100%) brightness(0%) invert(68%) sepia(50%) saturate(2601%) hue-rotate(178deg) brightness(105%) contrast(91%);
-  }
-  
-  .observed .stats_row .grenade_container.T .active.weapon.grenade {
+}
+
+.observed .stats_row .grenade_container.T .active.weapon.grenade {
     filter: invert(100%) brightness(0%) invert(66%) sepia(64%) saturate(450%) hue-rotate(6deg) brightness(110%) contrast(88%);
-  } */
+} */
 
 .observed .main_row .username_container {
     height: 100%;
@@ -162,17 +162,6 @@
 .obs_bar.T {
     background-color: var(--main-t);
 }
-
-
-/* .main_row .CT,
-  .stats_row .CT {
-    background-color: var(--main-ct);
-  }
-  
-  .main_row .T,
-  .stats_row .T {
-    background-color: var(--main-t);
-  } */
 
 .observed .under_avatar {
     height: 140px;

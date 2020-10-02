@@ -8,30 +8,23 @@
   max-width: 380px;
 }
 
-/* .killfeed .single_kill:nth-child(1) {
-    margin-right: calc(-100% - 10px);
-} */
-
 @keyframes KillLifeCycle {
   0% {
     opacity: 0;
-    /* height: 0; */
     margin-right: calc(-100% - 10px);
   }
 
   5% {
     opacity: 1;
-    /* height: 30px; */
   }
 
   95% {
     opacity: 1;
-    /* height: 30px; */
   }
 
   100% {
     opacity: 1;
-    /* height: 30px; */
+
     margin-right: 0px;
   }
 }
@@ -44,22 +37,19 @@
   color: var(--white-full);
   animation: KillLifeCycle 0.1s ease-out 1;
   animation-fill-mode: forwards;
-  /**/
+
   height: 30px;
   max-width: 380px;
   font-size: 14px;
   overflow: hidden;
   align-items: center;
   font-weight: 600;
-  /* padding-left: 15px;
-    padding-right: 15px; */
 }
 
 .killfeed .single_kill img.weapon {
   max-height: 24px;
   margin-left: 2px;
   margin-right: 2px;
-  /* margin-right: 4px; */
 }
 
 .killfeed .single_kill img.weapon {
@@ -68,12 +58,9 @@
 
 .killfeed .single_kill.hide {
   transition: height 1s, padding 1s, opacity 1s, margin 1s;
-  /* transition: opacity 1s, margin 1s; */
   opacity: 0;
   height: 0;
   margin: 0;
-  /*height:0px;
-    padding:0;*/
 }
 
 .killfeed .single_kill.show {

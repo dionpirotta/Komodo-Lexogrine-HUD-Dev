@@ -5,7 +5,6 @@ import { GSI } from "./../../App";
 import SeriesScore from "./SeriesScore";
 import TextAlert from "./TextAlert";
 import "./../Styles/alertsbar.css";
-import maps from "../Radar/LexoRadar/maps";
 import Bombarino from "./Bombarino";
 
 interface Props {
@@ -107,7 +106,9 @@ export default class AlertsBar extends React.Component<Props, State> {
     GSI.on("roundEnd", (score) => {
       console.log("round end called");
       if (this.state[this.props.map.team_t.orientation].alertType.planted) {
-        this.state[this.props.map.team_t.orientation].alertType.planted = false;
+        this.setState((state) => {
+          state[this.props.map.team_t.orientation].alertType.planted = false;
+        });
       }
       this.modAlert("WINS THE ROUND", score.winner.orientation, "roundWon");
     });
@@ -122,7 +123,9 @@ export default class AlertsBar extends React.Component<Props, State> {
     GSI.on("bombPlant", (player) => {
       if (this.props.phase.phase !== "over") {
         console.log("bomb planted");
-        this.state[player.team.orientation].alertType.planting = false;
+        this.setState((state) => {
+          state[player.team.orientation].alertType.planting = false;
+        });
         this.modAlert("PLANTED", player.team.orientation, "planted");
       }
     });
@@ -139,8 +142,9 @@ export default class AlertsBar extends React.Component<Props, State> {
 
     GSI.on("bombDefuse", (player) => {
       console.log("defused");
-      this.state[player.team.orientation].alertType.defusing = false;
-      // TODO remove this line under; if defused, hide the bomb area and show T series score
+      this.setState((state) => {
+        state[player.team.orientation].alertType.defusing = false;
+      });
       this.modAlertOff(this.props.map.team_t.orientation, "planted");
     });
 
@@ -196,7 +200,6 @@ export default class AlertsBar extends React.Component<Props, State> {
         <div className={`side_box left`}>
           <TextAlert team={left} show={this.state.left.alertType.teamTimeout} text={this.state.left.text} />
           <Bombarino team={left} show={this.state.left.alertType.planted} defusing={this.state.right.alertType.defusing} />
-          {/* <TextAlert team={left} show={this.state.left.alertType.planted} text={this.state.left.text} /> */}
           <TextAlert team={left} show={this.state.left.alertType.defusing} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.planting} text={this.state.left.text} />
           <TextAlert team={left} show={this.state.left.alertType.roundWon} text={this.state.left.text} />
@@ -212,7 +215,6 @@ export default class AlertsBar extends React.Component<Props, State> {
           <TextAlert team={right} show={this.state.right.alertType.roundWon} text={this.state.right.text} />
           <TextAlert team={right} show={this.state.right.alertType.planting} text={this.state.right.text} />
           <TextAlert team={right} show={this.state.right.alertType.defusing} text={this.state.right.text} />
-          {/* <TextAlert team={right} show={this.state.right.alertType.planted} text={this.state.right.text} /> */}
           <Bombarino team={right} show={this.state.right.alertType.planted} defusing={this.state.left.alertType.defusing} />
           <TextAlert team={right} show={this.state.right.alertType.teamTimeout} text={this.state.right.text} />
         </div>

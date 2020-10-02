@@ -21,9 +21,5 @@
     {
         "bind": "Alt+U",
         "action": "toggleMinimal"
-    },
-    {
-        "bind": "Alt+Y",
-        "action": "toggleAvatar"
     }
 ]

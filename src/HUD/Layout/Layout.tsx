@@ -1,7 +1,6 @@
 import React from "react";
 import TeamBox from "./../Players/TeamBox";
 import MatchBar from "../MatchBar/MatchBar";
-import SeriesBox from "../MatchBar/SeriesBox";
 import Observed from "./../Players/Observed";
 import { CSGO, Team } from "csgogsi-socket";
 import { Match } from "../../api/interfaces";
@@ -27,7 +26,6 @@ interface Props {
 interface State {
   winner: Team | null;
   showWin: boolean;
-  forceHide: boolean;
   active: boolean;
   minimal: boolean;
   util: boolean;
@@ -39,7 +37,6 @@ export default class Layout extends React.Component<Props, State> {
     this.state = {
       winner: null,
       showWin: false,
-      forceHide: false,
       active: true,
       minimal: false,
       util: false,
@@ -47,26 +44,12 @@ export default class Layout extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    // GSI.on("roundEnd", (score) => {
-    //   this.setState({ winner: score.winner, showWin: true }, () => {
-    //     setTimeout(() => {
-    //       this.setState({ showWin: false });
-    //     }, 4000);
-    //   });
-    // });
     GSI.on("bombPlant", () => {
       this.setState({ util: true }, () => {
         setTimeout(() => {
           this.setState({ util: false });
         }, 5000);
       });
-    });
-    actions.on("boxesState", (state: string) => {
-      if (state === "show") {
-        this.setState({ forceHide: false });
-      } else if (state === "hide") {
-        this.setState({ forceHide: true });
-      }
     });
     actions.on("toggleActive", () => {
       this.setState((state) => ({ active: !state.active }));
@@ -95,7 +78,6 @@ export default class Layout extends React.Component<Props, State> {
     const rightPlayers = game.players.filter((player) => player.team.side === right.side);
 
     const isFreezetime = (game.round && game.round.phase === "freezetime") || game.phase_countdowns.phase === "freezetime";
-    const { forceHide } = this.state;
 
     return (
       <div className={`layout ${this.state.active ? "active" : "inactive"}`}>
@@ -133,27 +115,27 @@ export default class Layout extends React.Component<Props, State> {
           <TeamBox team={right} players={rightPlayers} side="right" current={game.player} isFreezetime={isFreezetime} />
 
           <div className={"boxes left"}>
-            <SideBox side="left" hide={forceHide} />
-            <UtilityLevel team={left.side} side="left" players={game.players} show={(isFreezetime && !forceHide) || (this.state.util && !forceHide)} />
+            <SideBox side="left" />
+            <UtilityLevel team={left.side} side="left" players={game.players} show={isFreezetime || this.state.util} />
             <MoneyBox
               team={left.side}
               side="left"
               loss={left.consecutive_round_losses * 500 + 1400}
               equipment={leftPlayers.map((player) => player.state.equip_value).reduce((pre, now) => pre + now, 0)}
               money={leftPlayers.map((player) => player.state.money).reduce((pre, now) => pre + now, 0)}
-              show={isFreezetime && !forceHide}
+              show={isFreezetime}
             />
           </div>
           <div className={"boxes right"}>
-            <SideBox side="right" hide={forceHide} />
-            <UtilityLevel team={right.side} side="right" players={game.players} show={(isFreezetime && !forceHide) || (this.state.util && !forceHide)} />
+            <SideBox side="right" />
+            <UtilityLevel team={right.side} side="right" players={game.players} show={isFreezetime || this.state.util} />
             <MoneyBox
               team={right.side}
               side="right"
               loss={right.consecutive_round_losses * 500 + 1400}
               equipment={rightPlayers.map((player) => player.state.equip_value).reduce((pre, now) => pre + now, 0)}
               money={rightPlayers.map((player) => player.state.money).reduce((pre, now) => pre + now, 0)}
-              show={isFreezetime && !forceHide}
+              show={isFreezetime}
             />
           </div>
         </div>
