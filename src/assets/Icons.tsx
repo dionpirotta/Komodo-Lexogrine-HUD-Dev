@@ -26,6 +26,8 @@ import Burning from './../assets/images/icon_burning.png';
 import C4 from './../assets/images/icon_c4_default.png';
 import C4Red from './../assets/images/icon_c4_red.png';
 import C4T from './../assets/images/icon_c4_T.png';
+import C4T_A from './../assets/images/icon_c4_T_A.png';
+import C4T_B from './../assets/images/icon_c4_T_B.png';
 import DefuseCT from './../assets/images/icon_defuse_CT.png';
 import Defuse from './../assets/images/icon_defuse_default.png';
 import HealthCT from './../assets/images/icon_health_CT.png';
@@ -79,6 +81,8 @@ export {
     C4,
     C4Red,
     C4T,
+    C4T_A,
+    C4T_B,
     DefuseCT,
     Defuse,
     HealthCT,

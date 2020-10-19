@@ -2,7 +2,7 @@ import React from "react";
 import * as I from "csgogsi-socket";
 import "./../Styles/phasetimer.css";
 import { GSI } from "../../App";
-import { Hourglass, BombExplosionT, C4, C4T, Defuse, DefuseCT, Pause, PauseCT, PauseT, SkullT, SkullCT, TimerCT } from "./../../assets/Icons";
+import { Hourglass, BombExplosionT, C4, C4T, C4T_A, C4T_B, Defuse, DefuseCT, Pause, PauseCT, PauseT, SkullT, SkullCT, TimerCT } from "./../../assets/Icons";
 const timeoutTime = 30;
 
 interface Props {
@@ -67,7 +67,7 @@ export default class PhaseTimer extends React.Component<Props, State> {
   componentDidMount() {
     GSI.on("bombPlant", () => {
       if (this.props.phase.phase !== "over") {
-        this.setWhichImageState(true, C4T);
+        this.setWhichImageState(true, this.props.bomb?.site === 'A' ? C4T_A : C4T_B);
         //   this.setState({ whichImage: C4, bgColor: "--color-bomb" });
       }
     });
