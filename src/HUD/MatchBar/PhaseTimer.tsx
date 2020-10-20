@@ -67,7 +67,17 @@ export default class PhaseTimer extends React.Component<Props, State> {
   componentDidMount() {
     GSI.on("bombPlant", () => {
       if (this.props.phase.phase !== "over") {
-        this.setWhichImageState(true, this.props.bomb?.site === 'A' ? C4T_A : C4T_B);
+        let bomb_image = null;
+        if (this.props.bomb?.site === "A"){
+          bomb_image = C4T_A;
+        }
+        else if (this.props.bomb?.site === "B") {
+          bomb_image = C4T_B;
+        }
+        else {
+          bomb_image = C4T;
+        }
+        this.setWhichImageState(true, bomb_image);
         //   this.setState({ whichImage: C4, bgColor: "--color-bomb" });
       }
     });

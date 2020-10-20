@@ -71,9 +71,9 @@ export default class PlayerBox extends React.Component<IProps, IState> {
             </div>
             <div className={`row ${this.props.isObserved ? "obs" : ""}`}>
               <div className="armor_and_utility">
-                <Bomb player={player} />
                 <Armor player={player} isDefault={false} />
                 <Defuse player={player} />
+                <Bomb player={player} />
               </div>
               <div className="money">${player.state.money}</div>
               <div className="round_kills">

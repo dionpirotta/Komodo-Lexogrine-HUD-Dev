@@ -12,7 +12,8 @@
 
 .teambox {
     position: fixed;
-    bottom: 0px;
+    top: 670px;
+    /* bottom: 0px; */
     display: flex;
     flex-direction: column;
     opacity: 1;
@@ -39,7 +40,8 @@
 .teambox .player {
     width: 645px;
     height: 70px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -264,6 +266,7 @@
 .teambox .player .row .armor_and_utility {
     width: 46px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     padding-left: 2px;
     padding-right: 2px;
@@ -271,13 +274,13 @@
 
 /* Center Here will center if 1 item, flex will keep stuck to side */
 .teambox.left .player .row .armor_and_utility {
-    justify-content: flex-start;
+    flex-direction: row;
     /* justify-content: center; */
 }
 
 /* Center Here will center if 1 item, flex will keep stuck to side */
 .teambox.right .player .row .armor_and_utility {
-    justify-content: flex-end;
+    flex-direction: row-reverse;
     /* justify-content: center; */
 }
 
