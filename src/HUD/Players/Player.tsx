@@ -35,7 +35,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
   render() {
     const { player } = this.props;
     const weapons: WeaponRaw[] = Object.values(player.weapons).map((weapon) => ({ ...weapon, name: weapon.name.replace("weapon_", "") }));
-    const primary = weapons.filter((weapon) => !["C4", "Pistol", "Knife", "Grenade"].includes(weapon.type))[0] || null;
+    const primary = weapons.filter(weapon => !['C4', 'Pistol', 'Knife', 'Grenade', undefined].includes(weapon.type))[0] || null;
     const secondary = weapons.filter((weapon) => weapon.type === "Pistol")[0] || null;
     const knife = weapons.filter((weapon) => weapon.type === "Knife")[0] || null;
     const grenades = weapons.filter((weapon) => weapon.type === "Grenade");

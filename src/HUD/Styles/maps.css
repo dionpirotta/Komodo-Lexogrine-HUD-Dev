@@ -48,6 +48,12 @@
     max-width: 90%;
 }
 
+.veto_entry .team_logo .logo {
+    height: 23px;
+    width: 23px;
+
+}
+
 .veto_entry .map_name.active {
     text-shadow: 0 0 4px var(--white-full);
     font-weight: 600;
