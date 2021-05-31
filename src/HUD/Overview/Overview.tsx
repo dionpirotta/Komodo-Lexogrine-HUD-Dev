@@ -5,7 +5,7 @@ import * as I from '../../api/interfaces';
 import PlayerOverview from '../PlayerOverview/PlayerOverview';
 import MatchOverview from '../MatchOverview/MatchOverview';
 import TeamOverview from '../TeamOverview/TeamOverview';
-import { Map, Player } from 'csgogsi';
+import { Map, Player } from 'csgogsi-socket';
 import api from '../../api/api';
 
 interface IState {

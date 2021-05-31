@@ -1,6 +1,6 @@
 import React from "react";
 import "./../Styles/seriesscore.css";
-import { Team } from "csgogsi";
+import { Team } from "csgogsi-socket";
 
 interface Props {
   team: Team;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Team } from "csgogsi";
+import { Team } from "csgogsi-socket";
 import "./../Styles/bombarino.css";
 import BombTimer from "./../Timers/Countdown";
 import { GSI } from "./../../App";
