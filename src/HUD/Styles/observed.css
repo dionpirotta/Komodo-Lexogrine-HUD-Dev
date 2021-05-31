@@ -207,7 +207,7 @@
 }
 
 .observed .stats_row .health_armor_container .icon img,
-.observed .stats_row .health_armor_container .icon .armor_indicator img {
+.observed .stats_row .health_armor_container .icon .armor_indicator svg {
     max-height: 50px;
     max-width: 28px;
     padding-left: 2px;
@@ -277,8 +277,9 @@
     background-color: var(--sub-panel-color);
 }
 
-.observed .stats_row .bomb_kit_icon .bomb_indicator img,
-.observed .stats_row .bomb_kit_icon .defuse_indicator img {
+.observed .stats_row .bomb_kit_icon .bomb_indicator svg,
+.observed .stats_row .bomb_kit_icon .defuse_indicator svg,
+.observed .stats_row .bomb_kit_icon .armor_indicator svg {
     max-height: 50px;
     max-width: 24px;
     display: flex;
@@ -377,7 +378,7 @@
     padding-right: 4px;
 }
 
-.observed .stats_row .ammo .ammo_icon_container img {
+.observed .stats_row .ammo .ammo_icon_container svg {
     max-width: 30px;
 }
 
@@ -389,7 +390,7 @@
     justify-content: center;
 }
 
-.observed .stats_row .ammo .ammo_knife img {
+.observed .stats_row .ammo .ammo_knife img, .observed .stats_row .ammo .ammo_knife svg {
     max-height: 75%;
     max-width: 75%;
 }

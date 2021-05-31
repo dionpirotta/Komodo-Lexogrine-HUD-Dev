@@ -7,6 +7,7 @@ import Bomb from "./../Indicators/Bomb";
 import Defuse from "./../Indicators/Defuse";
 import { Skull, SkullCT, SkullT, Burning, Blind } from "./../../assets/Icons";
 import { GSI } from "../../App";
+import './../Styles/players.css';
 
 interface IProps {
   player: Player;
@@ -71,7 +72,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
             </div>
             <div className={`row ${this.props.isObserved ? "obs" : ""}`}>
               <div className="armor_and_utility">
-                <Armor player={player} isDefault={false} />
+                <Armor player={player} />
                 <Defuse player={player} />
                 <Bomb player={player} />
               </div>

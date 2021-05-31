@@ -1,3 +1,5 @@
-export default {
-  playerSize: 40,
-};
+const config = {
+    playerSize: 40,
+}
+
+export default config;

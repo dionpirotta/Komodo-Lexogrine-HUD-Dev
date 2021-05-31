@@ -12,8 +12,7 @@
 
 .teambox {
     position: fixed;
-    top: 670px;
-    /* bottom: 0px; */
+    bottom: 10px;
     display: flex;
     flex-direction: column;
     opacity: 1;
@@ -294,13 +293,18 @@
     overflow: hidden;
 }
 
-.player .armor_indicator img,
-.player .bomb_indicator img,
-.player .defuse_indicator img {
-    max-height: 100%;
+.player .armor_indicator svg,
+.player .bomb_indicator svg,
+.player .defuse_indicator svg {
+    max-height: 23px;
     max-width: 100%;
 }
-
+.CT .player svg:not(.weapon), .CT.observed svg:not(.weapon) {
+    fill: var(--color-new-ct);
+}
+.T .player svg:not(.weapon), .T.observed svg:not(.weapon) {
+    fill: var(--color-new-t);
+}
 .teambox .player .row .money {
     width: 63px;
     color: var(--color-moneys);
@@ -401,7 +405,7 @@
     background: linear-gradient(270deg, var(--color-new-t) 0%, var(--color-t) 60%);
 }
 
-.player .username img.weapon {
+.player .username svg.weapon {
     max-height: 30px;
     width: auto;
     max-width: 90px;
@@ -409,11 +413,11 @@
     margin-right: 2px;
 }
 
-img.weapon {
+svg.weapon {
     filter: invert(100%) invert(58%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(96%) contrast(95%);
 }
 
-img.weapon.active {
+svg.weapon.active {
     filter: drop-shadow(0.1px 0.1px 0.1px var(--main-panel-color)) drop-shadow(0.1px 0.1px 0.1px var(--white-full));
 }
 
@@ -461,7 +465,7 @@ img.weapon.active {
     justify-content: flex-start;
 }
 
-.player .grenades img.grenade {
+.player .grenades svg.grenade {
     max-height: 24px;
 }
 

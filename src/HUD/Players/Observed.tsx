@@ -12,7 +12,8 @@ import Defuse from "./../Indicators/Defuse";
 import { Veto } from "../../api/interfaces";
 import { configs } from "./../../App";
 
-import { HealthCT, HealthT, HealthFullCT, HealthFullT, BulletsCT, BulletsT, SkullCT, SkullT } from "./../../assets/Icons";
+import { BulletsCT, BulletsT, SkullCT, SkullT } from "./../../assets/Icons";
+import { Bullets, HealthFull } from "../../assets/IconsSVG";
 
 class Statistic extends React.PureComponent<{ label: string; value: string | number }> {
   render() {
@@ -94,16 +95,13 @@ export default class Observed extends React.Component<Props, State> {
           <div className={`obs_bar ${player.team.side}`}></div>
           <div className="health_armor_container">
             <div className="health_icon icon">
-              <img
-                src={(player.team.side === "CT" && (player.state.health > 20 ? HealthFullCT : HealthCT)) || (player.team.side === "T" && (player.state.health > 20 ? HealthFullT : HealthT)) || ""}
-                alt=""
-              />
+              <HealthFull />
             </div>
             <div className="health text" style={player.state.health > 20 ? { color: "var(--white-full)" } : { color: "var(--color-bomb)" }}>
               {player.state.health}
             </div>
             <div className="armor_icon icon">
-              <Armor player={player} isDefault={false} />
+              <Armor player={player} />
             </div>
             <div className="armor text" style={player.state.armor > 30 ? { color: "var(--white-full)" } : { color: "var(--color-bomb)" }}>
               {player.state.armor}
@@ -143,7 +141,7 @@ export default class Observed extends React.Component<Props, State> {
             ) : (
               <div className="ammo_cont">
                 <div className="ammo_icon_container">
-                  <img src={player.team.side === "CT" ? BulletsCT : BulletsT} alt="" />
+                  <Bullets />
                 </div>
                 <div className="ammo_counter">
                   <div className="ammo_clip" style={currentWeapon && currentWeapon.ammo_clip && currentWeapon.ammo_clip <= 3 ? { color: "var(--color-bomb)" } : { color: "var(--white-full)" }}>

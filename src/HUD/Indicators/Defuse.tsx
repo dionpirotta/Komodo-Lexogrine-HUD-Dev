@@ -1,14 +1,15 @@
-import React from "react";
-import { Player } from "csgogsi-socket";
-import { DefuseCT as DefuseIcon } from "./../../assets/Icons";
+import React from 'react';
+import { Player } from 'csgogsi-socket';
+import {Defuse as DefuseIcon} from './../../assets/IconsSVG';
 export default class Defuse extends React.Component<{ player: Player }> {
-  render() {
-    const { player } = this.props;
-    if (!player.state.health || !player.state.defusekit) return null;
-    return (
-      <div className={`defuse_indicator`}>
-        <img src={DefuseIcon} alt="" />
-      </div>
-    );
-  }
+    render() {
+        const { player } = this.props;
+        if(!player.state.health || !player.state.defusekit) return '';
+        return (
+            <div className={`defuse_indicator`}>
+                <DefuseIcon />
+            </div>
+        );
+    }
+
 }
