@@ -153,7 +153,7 @@ Distributed under the GPL-3 License. See `LICENSE` for more information.
 
 Dion Pirotta - [@KomodoAU](https://twitter.com/KomodoAU) - komodoau@hotmail.com
 
-Project Link: [https://github.com/dionpirotta/ProjectParallel](https://github.com/dionpirotta/ProjectParallel)
+Project Link: [https://github.com/dionpirotta/Komodo-Lexogrine-HUD-Dev](https://github.com/dionpirotta/Komodo-Lexogrine-HUD-Dev)
 
 <!-- ACKNOWLEDGEMENTS -->
 
