@@ -63,7 +63,7 @@ export default class PlayerBox extends React.Component<IProps, IState> {
             <div className="row">
               <div className="health">{player.state.health}</div>
               <div className="username">
-                {isLeft ? player.observer_slot + "|" : ""} {player.name} {!isLeft ? "|" + player.observer_slot : ""}
+                {isLeft ? player.observer_slot + " |" : ""} {player.name} {!isLeft ? "| " + player.observer_slot : ""}
                 {primary || secondary ? <Weapon weapon={primary ? primary.name : secondary.name} active={primary ? primary.state === "active" : secondary.state === "active"} /> : ""}
                 {!primary && !secondary && knife ? <Weapon weapon={knife ? knife.name : ""} active={knife ? knife.state === "active" : false} /> : ""}
               </div>
